@@ -7,16 +7,19 @@
     class KaartBoek {
         constructor(kaarten = nieuwDeck()) {
             this.kaarten = kaarten;
+            kaarten.forEach(element => {
+                kaarten.push(element);
+            });
         }
     }
-    
+ 
     class Kaart {
         constructor(kaartSoort, kaartWaarde) {
-            this.kaartSoort = soort;
-            this.kaartWaarde = waarde;
+            this.kaartSoort = kaartSoort;
+            this.kaartWaarde = kaartWaarde;
         }
     }
-    
+
     function nieuwDeck() {
         return SOORT.flatMap(soort => {
             return WAARDE.map(waarde => {
@@ -25,5 +28,8 @@
         })
     }
 
+    const deck = new KaartBoek();
+
+    console.log(deck);
 })();
   
