@@ -1,6 +1,9 @@
+body {
+    background-color: #375C38;
+}
 .ButtonPlay {
 	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
-	background-color:#f24537;
+	background-color:#ff0000;
 	border-radius:23px;
 	border:1px solid #d02718;
 	display:inline-block;
