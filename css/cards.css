@@ -1,7 +1,7 @@
 .ir {
     display: block;
     background-size: 100%;
-    text-indent: 150%;
+    text-indent: -9999px;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -9,7 +9,7 @@ h1 {
     background: url(../assets/BlackJack.svg);
     background-repeat: no-repeat;
     width: 10rem;
-    height: 3rem;
+    padding: 10rem;
 }
 .HA{
     background: url(../assets/HA.svg); 
