@@ -16,6 +16,8 @@
     </header>
     <main>
     
+        <div class="overlay"></div>
+
         <section class="popup">
             <div class="popup-container">
                 <h3>test</h3>
@@ -23,18 +25,18 @@
 
         </section>
         <!--start scherm-->
-        <section>
-            <div><button>i</button></div>
+        <section class="overlayStart">
+            <div><button class="PopUpButton info">i</button></div>
             
             <h1>Blackjack</h1>
             <form action="#">
-                <div>
+                <div class="amountPlayers">
                     <label for="players">Enter the number of players<br>(MAX 4)</label>
                     <input type="number" id="players" min="1" max="4">
                     <div name="error">geen nummer tussen 1 en 4</div>
                 </div>
                 <div>
-                    <button type="submit" class="ButtonPlay">Play</button>
+                    <button type="submit" class="ButtonPlay PopUpButton">Play</button>
                 </div>
             </form>
         </section>
