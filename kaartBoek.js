@@ -1,35 +1,55 @@
 'use strict';
 
-(function () {    
-    const SOORT = ['H', 'K', 'R', 'S'];
-    const WAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'B', 'D', 'H', 'A']
+
+const SOORT = ['H', 'K', 'R', 'S'];
+const WAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'B', 'D', 'H', 'A']
+const SPELWAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '11']
     
-    class KaartBoek {
-        constructor(kaarten = nieuwDeck()) {
-            this.kaarten = kaarten;
-            kaarten.forEach(element => {
-                kaarten.push(element);
-            });
-        }
+class KaartBoek {
+    constructor(kaarten) {
+        this.kaarten = kaarten;
     }
+}
  
-    class Kaart {
-        constructor(kaartSoort, kaartWaarde) {
-            this.kaartSoort = kaartSoort;
-            this.kaartWaarde = kaartWaarde;
+class Kaart {
+    constructor(kaartSoort, kaartWaarde, spelWaarde) {
+        this.kaartSoort = kaartSoort;
+        this.kaartWaarde = kaartWaarde;
+        this.spelWaarde = spelWaarde;
+    }
+}
+
+// maak deck aan
+function nieuwDeck() {
+        
+    const kaarten = [];
+        
+    for (let i = 0 ; i < WAARDE.length ; i++) {
+        for (let j = 0 ; j < SOORT.length ; j++) {
+            kaarten.push(new Kaart(SOORT[j], WAARDE[i], SPELWAARDE[i]));
         }
     }
+        
+    kaarten.forEach(element => {
+        kaarten.push(element);
+    });
+        
+    return kaarten;
+}
+    
+const deck = new KaartBoek(nieuwDeck());
 
-    function nieuwDeck() {
-        return SOORT.flatMap(soort => {
-            return WAARDE.map(waarde => {
-                return new Kaart(soort, waarde)
-            })
-        })
+// shuffle deck
+function shuffleDeck(kaarten) {
+    for (let i = 0 ; i < kaarten.length ; i++) {
+        let tempKaart = kaarten[i];
+        let randomIndex = Math.floor(Math.random() * 104);
+        kaarten[i] = kaarten[randomIndex];
+        kaarten[randomIndex] = tempKaart;
     }
 
-    const deck = new KaartBoek();
+    return kaarten;
+}
 
-    console.log(deck);
-})();
-  
+shuffleDeck(deck.kaarten);
+console.log(deck);
