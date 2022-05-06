@@ -22,9 +22,13 @@ body {
 	border-radius: 50%;
 	-webkit-text-stroke: 1px #7E0000;
 	font-family: 'Lora', serif;
-	font-style: italic;
+	font-style: oblique;
 	font-weight: bold;
 	font-size: 64px;
+	margin-left: 10px;
+	margin-top: 10px;
+	height: 76px;
+	width: 76px;
 }
 .ButtonPlay:hover {
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
