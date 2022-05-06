@@ -1,0 +1,325 @@
+.ir {
+    display: block;
+    background-size: 100%;
+    text-indent: -9999px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+h1 {
+    background: url(../assets/BlackJack.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    padding: 10rem;
+}
+.HA{
+    background: url(../assets/HA.svg); 
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.H2{
+    background: url(../assets/H2.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.H3{
+    background: url(../assets/H3.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.H4{
+    background: url(../assets/H4.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.H5{
+    background: url(../assets/H5.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.H6{
+    background: url(../assets/H6.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.H7{
+    background: url(../assets/H7.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.H8{
+    background: url(../assets/H8.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.H9{
+    background: url(../assets/H9.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.HT{
+    background: url(../assets/HT.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.HB{
+    background: url(../assets/HB.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.HD{
+    background: url(../assets/HD.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.HH{
+    background: url(../assets/HH.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.KA{
+    background: url(../assets/HA.svg); 
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.K2{
+    background: url(../assets/H2.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.K3{
+    background: url(../assets/H3.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.K4{
+    background: url(../assets/H4.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.K5{
+    background: url(../assets/H5.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.K6{
+    background: url(../assets/H6.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.K7{
+    background: url(../assets/H7.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.K8{
+    background: url(../assets/H8.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.K9{
+    background: url(../assets/H9.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.KT{
+    background: url(../assets/HT.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.KB{
+    background: url(../assets/HB.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.KD{
+    background: url(../assets/HD.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.KH{
+    background: url(../assets/HH.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.RA{
+    background: url(../assets/HA.svg); 
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.R2{
+    background: url(../assets/H2.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.R3{
+    background: url(../assets/H3.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.R4{
+    background: url(../assets/H4.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.R5{
+    background: url(../assets/H5.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.R6{
+    background: url(../assets/H6.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.R7{
+    background: url(../assets/H7.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.R8{
+    background: url(../assets/H8.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.R9{
+    background: url(../assets/H9.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.RT{
+    background: url(../assets/HT.svg);
+    background-repeat: no-repeat;
+    padding: 10.5rem;
+    background-size: 8rem;
+}
+.RB{
+    background: url(../assets/HB.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.RD{
+    background: url(../assets/HD.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.RH{
+    background: url(../assets/HH.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.SA{
+    background: url(../assets/HA.svg); 
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.S2{
+    background: url(../assets/H2.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.S3{
+    background: url(../assets/H3.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.S4{
+    background: url(../assets/H4.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.S5{
+    background: url(../assets/H5.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.S6{
+    background: url(../assets/H6.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.S7{
+    background: url(../assets/H7.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.S8{
+    background: url(../assets/H8.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.S9{
+    background: url(../assets/H9.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.ST{
+    background: url(../assets/HT.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.SB{
+    background: url(../assets/HB.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.SD{
+    background: url(../assets/HD.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
+.SH{
+    background: url(../assets/HH.svg);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
+}
