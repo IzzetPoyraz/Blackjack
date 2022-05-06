@@ -224,8 +224,8 @@ h1 {
 .RT{
     background: url(../assets/HT.svg);
     background-repeat: no-repeat;
-    width: 10rem;
-    height: 3rem; 
+    padding: 10.5rem;
+    background-size: 8rem;
 }
 .RB{
     background: url(../assets/HB.svg);
