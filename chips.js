@@ -3,12 +3,12 @@
 'use strict'
 
 const een = document.querySelector('#eenPunten')
-const vijf = document.querySelector('#5punten')
-const vijventwintig = document.querySelector('#25punten')
-const fijftig = document.querySelector('#50punten')
-const honderd = document.querySelector('100punten')
-const vijfhonderd = document.querySelector('500punten')
-const duizend = document.querySelector('1000punten')
+const vijf = document.querySelector('#vijfPunten')
+const vijventwintig = document.querySelector('#2vijventwintigPunten')
+const fijftig = document.querySelector('#fijftigPunten')
+const honderd = document.querySelector('honderdPunten')
+const vijfhonderd = document.querySelector('vijfhonderdPunten')
+const duizend = document.querySelector('duizendPunten')
 
 let betAmount = 0;
 let chipsTotaal = 1000;
