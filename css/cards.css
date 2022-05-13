@@ -9,7 +9,12 @@ h1 {
     background: url(../assets/BlackJack.svg);
     background-repeat: no-repeat;
     width: 10rem;
-    padding: 10rem;
+    padding: 6rem;
+    padding-bottom: 2rem;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: 30rem;
 }
 .HA{
     background: url(../assets/HA.svg); 
