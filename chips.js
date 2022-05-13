@@ -4,7 +4,7 @@
 
 const een = document.querySelector('#eenPunten')
 const vijf = document.querySelector('#vijfPunten')
-const vijventwintig = document.querySelector('#2vijventwintigPunten')
+const vijventwintig = document.querySelector('#vijventwintigPunten')
 const fijftig = document.querySelector('#fijftigPunten')
 const honderd = document.querySelector('honderdPunten')
 const vijfhonderd = document.querySelector('vijfhonderdPunten')
