@@ -55,11 +55,12 @@ function pickCard (player) {
     }
 }
 function play () {
-    while (playerStand){
+    if (playerStand){
         pickCard(player)
-    } 
-    player=0
-    while (delerStand){
-        pickCard(player)
+    } else{
+        player=0
+        while (delerStand){
+            pickCard(player)
+        }
     }
 }
