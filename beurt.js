@@ -1,4 +1,4 @@
-'use strickt'
+'use strict';
 
 import "KaartBoek.js"
 
