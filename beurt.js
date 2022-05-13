@@ -40,17 +40,14 @@ function pickCard (player) {
         aceDeler+=aceTeller(pickedCard)
         if (waardeGroter(playerTotal, aceDeler)>21){
             // afhandeling na bust
-        } else{
-            player=1
         }
-    } else if (player===1){
+
+    } else if (player === 1 || player === "1s"){
         pickedCard = selectCard()
         playerTotal+=pickedCard.SPELWAARDE
         acePlayer+=aceTeller(pickedCard)
         if (waardeGroter(playerTotal, acePlayer)>21){
             // afhandeling na bust
-        } else{
-            player=0
         }
     }
 }
