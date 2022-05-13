@@ -2,7 +2,7 @@
 
 'use strict'
 
-const een = document.querySelector('#1punten')
+const een = document.querySelector('#eenPunten')
 const vijf = document.querySelector('#5punten')
 const vijventwintig = document.querySelector('#25punten')
 const fijftig = document.querySelector('#50punten')
