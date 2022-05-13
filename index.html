@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/script.js" defer></script>
     <script src="/kaartBoek.js" defer></script>
+    <script src="/popup.js" defer></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/popup.css">
     <title>Blackjack</title>
 </head>
 <body>
@@ -16,20 +18,24 @@
         
     </header>
     <main>
-    
+         
         <div class="overlay"></div>
 
-        <section class="popup">
-            <div class="popup-container">
-                <h3>test</h3>
-            </div>
-
-        </section>
+        
         <h1 class="ir" >Blackjack</h1>
         
         <!--start scherm-->
         <section class="overlayStart">
-            <div><button class="PopUpButton info">i</button></div>
+           <!--popup-->
+         <div class="popup-container" id="popup_container">
+            <div class="popup">
+                <h3>test</h3>
+                <p>TEST</p>
+                <a href="" id="close">close</a>
+            </div>
+            </div>
+            <!--popup-->
+            <div ><button class="open" id="open">i</button></div>
             <img src="./logo.svg" alt="">
             <form action="#">
                 <div class="amountPlayers">

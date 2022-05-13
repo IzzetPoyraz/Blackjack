@@ -1,7 +1,7 @@
 body {
 	background-color: #2B802E;
 }
-.PopUpButton {
+.PopUpButton,.open {
 	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
 	background-color:#ff0000;
 	border:2px solid #7E0000;
@@ -18,7 +18,7 @@ body {
 	padding: 14px 76px;
 	font-size: 25px;
 }
-.info{
+.info,.open{
 	border-radius: 50%;
 	-webkit-text-stroke: 1px #7E0000;
 	font-family: 'Lora', serif;
