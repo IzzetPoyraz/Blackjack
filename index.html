@@ -16,6 +16,9 @@
         
     </header>
     <main>
+    
+        <div class="overlay"></div>
+
         <section class="popup">
             <div class="popup-container">
                 <h3>test</h3>
@@ -25,18 +28,17 @@
         <h1 class="ir" >Blackjack</h1>
         
         <!--start scherm-->
-        <section>
-            <div><button>i</button></div>
-            <p class="ir R9">kaart1</p>
+        <section class="overlayStart">
+            <div><button class="PopUpButton info">i</button></div>
             <img src="./logo.svg" alt="">
             <form action="#">
-                <div>
+                <div class="amountPlayers">
                     <label for="players">Enter the number of players<br>(MAX 4)</label>
                     <input type="number" id="players" min="1" max="4">
                     <div name="error">geen nummer tussen 1 en 4</div>
                 </div>
                 <div>
-                    <button type="submit" class="ButtonPlay">Play</button>
+                    <button type="submit" class="ButtonPlay PopUpButton">Play</button>
                 </div>
             </form>
         </section>
@@ -47,7 +49,7 @@
                 <p></p>
                 <img src="assets/" alt="card deck">
                 <div class="deelerPlaceHolder">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span class="ir RT"></span><span></span><span></span><span></span><span></span><span></span>
                 </div>
                 <div class="deelerPlaceHolderSplit">
                     <span></span><span></span><span></span><span></span><span></span><span></span>
