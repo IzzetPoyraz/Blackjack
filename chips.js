@@ -1,3 +1,5 @@
+(() =>{
+
 'use strickt'
 
 const een = document.querySelector('#1punten')
@@ -49,3 +51,4 @@ vijfhonderd.addEventListener("click", () =>{
 duizend.addEventListener("click", () =>{
     bet(1000)
 })
+})()
