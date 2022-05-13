@@ -1,6 +1,6 @@
 (() =>{
 
-'use strickt'
+'use strict'
 
 const een = document.querySelector('#1punten')
 const vijf = document.querySelector('#5punten')
