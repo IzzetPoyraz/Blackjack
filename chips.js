@@ -23,6 +23,8 @@ function bet (value){
     if (check(value)){
         betAmount+=value
         chipsTotaal-=value
+        console.log(betAmount)
+        console.log(chipsTotaal)
     }
 }
 
