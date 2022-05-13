@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./kaartBoek.js" defer></script>
     <script src="./blackJackMain.js" defer></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/common.css">
+    <script src="./kaartBoek.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/cards.css">
     <title>Blackjack</title>
 </head>
 <body>
@@ -15,11 +16,106 @@
         
     </header>
     <main>
-        <h1>Blackjack</h1>
-        <a class="ButtonPlay" href="#">Play</a>
+    
+        <div class="overlay"></div>
+
+        <section class="popup">
+            <div class="popup-container">
+                <h3>test</h3>
+            </div>
+
+        </section>
+        
+        
+        <!--start scherm-->
+        <section class="overlayStart">
+            <div><button class="PopUpButton info">i</button></div> 
+            <h1 class="ir" >Blackjack</h1>
+            <form action="#">
+                <div class="amountPlayers">
+                    <label for="players">Enter the number of players<br>(MAX 4)</label>
+                    <input type="number" id="players" min="1" max="4">
+                    <div name="error">geen nummer tussen 1 en 4</div>
+                </div>
+                <div>
+                    <button type="submit" class="ButtonPlay PopUpButton">Play</button>
+                </div>
+            </form>
+        </section>
+
+        <!--playing field-->
+        <section>
+            <section id="dealer">
+                <p></p>
+                <img src="assets/" alt="card deck">
+                <div class="dealerPlaceHolder">
+                    <span class="ir RT"></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="dealerPlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <section id="player 1">
+                <p></p>
+                <img src="assets/" alt="card placeholder">
+                <div class="player1PlaceHolder">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="player1PlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <section id="player 2">
+                <p></p>
+                <img src="assets/" alt="card placeholder">
+                <div class="player2PlaceHolder">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="player2PlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <section id="player 3">
+                <p></p>
+                <img src="assets/" alt="card placeholder">
+                <div class="player3PlaceHolder">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="player3PlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <section id="player 4">
+                <p></p>
+                <img src="assets/" alt="card placeholder">
+                <div class="player4PlaceHolder">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="player4PlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <button id="split">split</button>
+            <button id="hit">hit</button>
+            <button id="stand">stand</button>
+            <button id="double">double</button>
+        </section>
+
+
+        <section>
+            <p id="betamount"></p>
+            <ul>
+                <li><img src="assets/" alt="1 punt"></li>
+                <li><img src="assets/" alt="5 punten"></li>
+                <li><img src="assets/" alt="25 punten"></li>
+                <li><img src="assets/" alt="50 punten"></li>
+                <li><img src="assets/" alt="100 punten"></li>
+                <li><img src="assets/" alt="500 punten"></li>
+                <li><img src="assets/" alt="1000 punten"></li>
+            </ul>
+        </section>
     </main>
     <footer>
-
     </footer>
    
 </body>
