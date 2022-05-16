@@ -1,6 +1,5 @@
 'use strict';
 
-
 const SOORT = ['H', 'K', 'R', 'S'];
 const WAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'B', 'D', 'H', 'A']
 const SPELWAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '11']
@@ -37,7 +36,7 @@ function nieuwDeck() {
     return kaarten;
 }
     
-const deck = new KaartBoek(nieuwDeck());
+export const deck = new KaartBoek(nieuwDeck());
 
 // shuffle deck
 function shuffleDeck(kaarten) {
