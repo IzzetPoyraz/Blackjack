@@ -1,8 +1,8 @@
 'use strict';
 
-(function () {    
-    const SOORT = ['H', 'K', 'R', 'S'];
-    const WAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'B', 'D', 'H', 'A']
+const SOORT = ['H', 'K', 'R', 'S'];
+const WAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'B', 'D', 'H', 'A']
+const SPELWAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '11']
     
     class KaartBoek {
         constructor(kaarten = nieuwDeck()) {
@@ -24,6 +24,15 @@
             })
         })
     }
+export const deck = new KaartBoek(nieuwDeck());
 
-})();
-  
+// shuffle deck
+function shuffleDeck(kaarten) {
+    for (let i = 0 ; i < kaarten.length ; i++) {
+        let tempKaart = kaarten[i];
+        let randomIndex = Math.floor(Math.random() * 104);
+        kaarten[i] = kaarten[randomIndex];
+        kaarten[randomIndex] = tempKaart;
+    }
+
+};
