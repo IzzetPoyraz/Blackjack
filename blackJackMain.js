@@ -3,27 +3,27 @@ import { deck } from "./kaartBoek.js";
 class blackJack {
     constructor() {
         this.deck = deck;
-
     }
+    
+    
+    startGame() {
+        let dealer = new Dealer();
+        let player = new Player();
+    
+    }
+
 
 }
 
 class Dealer {
-    constructor() {
-        this.dealerHand = dealerHand;
-    }
+    hand = [];
+    totaleKaartWaarde;
 }
 
 class Player {
-    constructor() {
-        this.playerHand = playerHand;
-    }
+    hand = [];
+    splitHand = [];
+    totaleKaartWaarde;
 }
 
-function drawCards() {
-    let hand = [];
 
-    
-
-
-}

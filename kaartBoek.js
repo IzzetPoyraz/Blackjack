@@ -19,7 +19,7 @@ class Kaart {
 }
 
 // maak deck aan
-function nieuwDeck() {
+const nieuwDeck = function() {
         
     const kaarten = [];
         
@@ -39,7 +39,7 @@ function nieuwDeck() {
 export const deck = new KaartBoek(nieuwDeck());
 
 // shuffle deck
-function shuffleDeck(kaarten) {
+const shuffleDeck = function(kaarten) {
     for (let i = 0 ; i < kaarten.length ; i++) {
         let tempKaart = kaarten[i];
         let randomIndex = Math.floor(Math.random() * 104);
