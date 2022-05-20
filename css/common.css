@@ -136,9 +136,17 @@ input::-webkit-inner-spin-button{
 	padding-right: 1rem;
 	padding-left: 1rem;
 	width: 2rem;
-	margin-right: 2rem;
 	margin-left: auto;
 	background-color: white;
 	border: 2px solid black;
 	border-radius: 10px;
+}
+.inzetChips div{
+	display: flex;
+}
+.reset{
+	text-align: center;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	margin-top: 20px;
 }
