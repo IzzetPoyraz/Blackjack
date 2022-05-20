@@ -7,6 +7,8 @@
     <script type="module" src="/blackJackMain.js" defer></script>
     <script type="module" src="/kaartBoek.js" defer></script>
     <script src="chips.js" defer></script>
+    <script src="/popup.js" defer></script>
+    <link rel="stylesheet" href="./css/popup.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/cards.css">
@@ -17,15 +19,55 @@
         
     </header>
     <main>
-    
-        <img src="./assets/BlackJack.svg" alt="">
-        <!--start scherm-->
-        <section>
-            <div><button>i</button></div>
+        
+        <div class="overlay">
             
-            <img src="./logo.svg" alt="">
+        </div>
+
+        
+        
+        
+        <!--start scherm-->
+        <section class="overlayStart">
+            <div class="modal-container" id="modal_container">
+                <div class="modal">
+                    <h2>BlackJack</h2>
+                    <p>- dealer and player<br>
+                    target 21</p>
+                    <p>cases - (Ace - 1 or 11 ) Face Cards > 10 = 10 </p>
+                    <p>Desgin the game Blackjack.</p>
+                    <p> 
+                        For a given deck of cards, there are two people playing. 
+                        The dealer and the player. The dealer takes two 
+                        cards and one of them is hidden. The player gets two 
+                        cards after that he can choose to HIT or STAND. 
+                        Get one more card or give dealer the move. 
+                        The dealer makes a move if his total value of card if
+                         less than 17.</p>
+                    <p>The first person to reach 21 wins. All face cards are worth 10 except for ace which can be 1 or 11 depending on the situation</p>
+                    <p>Basic Blackjack Rules: The goal of blackjack is to beat the dealer's hand without going over 21. 
+                        Face cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand. 
+                        Each player starts with two cards, one of the dealer's cards is hidden until the end. 
+                        To 'Hit' is to ask for another card. To 'Stand' is to hold your total and end your turn.
+                        If you go over 21 you bust, and the dealer wins regardless of the dealer's hand. 
+                        If you are dealt 21 from the start (Ace 8 10), you got a blackjack.
+                        Blackjack usually means you win 1.5 the amount of your bet. Depends on the casino. 
+                        Dealer will hit until his/her cards total 17 or higher. 
+                        Doubling is like a hit, only the bet is doubled and you only get one more card. 
+                        Split can be done when you have two of the same card - the pair is split into two hands.
+                        Splitting also doubles the bet, because each new hand is worth the original bet. 
+                        You can only double/split on the first move, or first move of a hand created by a split. 
+                        You cannot play on two aces after they are split. 
+                        You can double on a hand resulting from a split, tripling or quadrupling you bet.</p>
+                    
+                    <button id="close">sluiten</button>
+                </div>
+            </div>
+       
+            <button id="open"  class="PopUpButton info">i</button>
+            <h1 class="ir" >Blackjack</h1>
             <form action="#">
-                <div>
+                <div class="amountPlayers">
                     <label for="players">Enter the number of players<br>(MAX 4)</label>
                     <input type="number" id="players" min="1" max="4">
                     <div name="error">geen nummer tussen 1 en 4</div>
@@ -34,6 +76,64 @@
                     <button type="submit" class="ButtonPlay PopUpButton">Play</button>
                 </div>
             </form>
+        </section>
+        
+    i  <!--playing field-->
+        <section>
+            <section id="dealer">
+              <p></p>
+                <img src="assets/" alt="card deck">
+                <div class="dealerPlaceHolder">
+                    <span class="ir RT"></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="dealerPlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <section id="player 1">
+                <p></p>
+                <img src="assets/" alt="card placeholder">
+                <div class="player1PlaceHolder">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="player1PlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <section id="player 2">
+                <p></p>
+                <img src="assets/" alt="card placeholder">
+                <div class="player2PlaceHolder">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="player2PlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <section id="player 3">
+                <p></p>
+                <img src="assets/" alt="card placeholder">
+                <div class="player3PlaceHolder">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="player3PlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <section id="player 4">
+                <p></p>
+                <img src="assets/" alt="card placeholder">
+                <div class="player4PlaceHolder">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="player4PlaceHolderSplit">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </section>
+            <button id="split">split</button>
+            <button id="hit">hit</button>
+            <button id="stand">stand</button>
+            <button id="double">double</button>
         </section>
 
         <!--playing field-->
@@ -107,7 +207,7 @@
                 <li><img id="vijfhonderdPunten" src="assets/poker-chip.png" alt="500 punten"></li>
                 <li><img id="duizendpunten" src="assets/poker-chip.png" alt="1000 punten"></li>
             </ul>
-        </section>
+        </section></div>
     </main>
     <footer>
     </footer>

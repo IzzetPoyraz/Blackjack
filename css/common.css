@@ -1,19 +1,34 @@
 body {
-    background-color: #375C38;
+	background-color: #2B802E;
 }
-.ButtonPlay {
+.PopUpButton,.open {
 	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
 	background-color:#ff0000;
-	border-radius:23px;
-	border:1px solid #d02718;
+	border:2px solid #7E0000;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:25px;
 	font-weight:bold;
-	padding:14px 76px;
 	text-decoration:none;
+	-webkit-text-stroke: 1.3px #7E0000;
+}
+.ButtonPlay{
+	border-radius:30%;
+	padding: 14px 76px;
+	font-size: 25px;
+}
+.info,.open{
+	border-radius: 50%;
+	-webkit-text-stroke: 1px #7E0000;
+	font-family: 'Lora', serif;
+	font-style: oblique;
+	font-weight: bold;
+	font-size: 64px;
+	margin-left: 10px;
+	margin-top: 10px;
+	height: 76px;
+	width: 76px;
 }
 .ButtonPlay:hover {
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
@@ -23,16 +38,93 @@ body {
 	position:relative;
 	top:1px;
 }
-.reset span{
-	border: 1px solid black;
-	background-color: black;
-	display: inline-block;
-	height: 1rem;
+.overlay{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: #375C38;
+	opacity: 0.9;
+	z-index: 10;
 }
-.reset span:first-child{
-	transform: rotate(45deg);
-	margin-right: -2px;
+.overlayStart{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 11;
 }
-.reset span:last-child{
-	transform: rotate(-45deg);
+#players{
+	border: 2px solid #2B802E;
+	width: 4vw;
+	height: 4vw;
+	-moz-appearance: textfield;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 32px;
+	text-align: center;
+}
+label{
+	color: #ff0000;
+	-webkit-text-stroke: 0.5px #7E0000;
+}
+.amountPlayers{
+	display: flex;
+	flex-direction: column;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+	-webkit-appearance: none;
+	margin: 0;
+}
+.inzetChips{
+	width: 66vw;
+	position: fixed;
+	bottom: 1rem;
+	left: 100%;
+	margin-left: -83%;
+	background-color: #2B802E;
+	border: 10px solid #C7891F;
+	border-radius: 10px;
+}
+.inzetChips ul{
+	display: flex;
+	padding: 0;
+	list-style: none;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+.inzetChips ul li{
+	width: 14%;
+	height: auto;
+	margin: 0;
+	margin-bottom: 0.5rem;
+	margin-right: 1rem;
+}
+.inzetChips ul :last-child{
+	margin-right: 0;
+}
+.inzetChips ul li img{
+	width: 100%;
+    height: auto;
+}
+.inzetDif{
+	display: flex;
+}
+#betamount{
+	text-align: center;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	width: 2rem;
+	margin-right: 2rem;
+	margin-left: auto;
+	background-color: white;
+	border: 2px solid black;
+	border-radius: 10px;
 }
