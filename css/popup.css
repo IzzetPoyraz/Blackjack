@@ -21,9 +21,11 @@
     border-radius: 5%;
     opacity: 1;
     box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
-    padding: 30px 50px;
-    width: 300px;
+    padding: 20px 40px;
+    width: 500px;
     max-width: 100%;
+    
+}
+.modal h2 {
     text-align: center;
-
 }
