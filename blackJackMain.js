@@ -1,11 +1,11 @@
 'use strict';
 
-const p1Kaart = docuement.querySelector(`.player1PlaceHolder > span:nth-child(${kaartIncex})`);
-hit.addEventListener('click', drawCards());
-stand.addEventListener('click', stand())
+//const p1Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(${kaartIncex})`);
+// hit.addEventListener('click', drawCards());
+// stand.addEventListener('click', stand())
 
 
-spilt('click', blackJack.split());
+// spilt('click', blackJack.split());
 
 // const split = document.querySelector("#split");
 // const hit = document.querySelector("#hit");
