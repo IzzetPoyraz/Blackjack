@@ -1,5 +1,12 @@
 'use strict';
 
+const p1Kaart = docuement.querySelector(`.player1PlaceHolder > span:nth-child(${kaartIncex})`);
+hit.addEventListener('click', drawCards());
+stand.addEventListener('click', stand())
+
+
+spilt('click', blackJack.split());
+
 // const split = document.querySelector("#split");
 // const hit = document.querySelector("#hit");
 // const stand = document.querySelector("#stand");
@@ -20,7 +27,11 @@ class blackJack {
     constructor() {
         this.deck = deck.kaarten;
     }
+    startGame() {
+        let dealer = new Dealer();
+        let player = new Player();
     
+    }
     // neem kaarten van het geshuffelde deck
     drawCards() {
         let hand = [];
@@ -32,8 +43,24 @@ class blackJack {
         
         return hand;
     }
+    checkSplit() {
+        if(player.hand[0] === player.hand[1]){
+            split.classList.toggle('display');
+            return true;
+        }
+        else{
+            false;
+        }
+    }
+    spilt(){
+        player.splitHand = player.hand.pop;
+        split.classList.toggle('display');
+    }
+        
+
 
 }
+
 
 class Person extends blackJack {
     hand = [];
