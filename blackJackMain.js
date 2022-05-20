@@ -43,8 +43,9 @@ class blackJack {
         
         return hand;
     }
+
     checkSplit() {
-        if(player.hand[0] === player.hand[1]){
+        if(player.hand[0].spelWaarde === player.hand[1].spelWaarde){
             split.classList.toggle('display');
             return true;
         }
