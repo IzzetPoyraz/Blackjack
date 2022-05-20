@@ -4,26 +4,38 @@ const stand = document.querySelector("#stand");
 const double = document.querySelector("#double");
 
 const p1Kaart = docuement.querySelector(`.player1PlaceHolder > span:nth-child(${kaartIncex})`);
-hit.addEventListener('click', play);
-stand.addEventListener('click', () => {
-    playerStand = 1;
-    play();
-});
+hit.addEventListener('click', drawCards());
+stand.addEventListener('click', stand())
 
-spilt('click', split());
+
+spilt('click', blackJack.split());
+
 import { deck } from "./kaartBoek.js";
 
 class blackJack {
     constructor() {
         this.deck = deck;
     }
-    
-    
     startGame() {
         let dealer = new Dealer();
         let player = new Player();
     
     }
+    checkSplit() {
+        if(player.hand[0] === player.hand[1]){
+            split.classList.toggle('display');
+            return true;
+        }
+        else{
+            false;
+        }
+    }
+    spilt(){
+        player.splitHand = player.hand.pop;
+        split.classList.toggle('display');
+    }
+        
+
 
 
 }
