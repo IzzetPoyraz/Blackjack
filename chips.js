@@ -6,12 +6,12 @@ const een = document.querySelector('#eenPunten')
 const vijf = document.querySelector('#vijfPunten')
 const vijventwintig = document.querySelector('#vijventwintigPunten')
 const fijftig = document.querySelector('#fijftigPunten')
-const honderd = document.querySelector('honderdPunten')
-const vijfhonderd = document.querySelector('vijfhonderdPunten')
-const duizend = document.querySelector('duizendPunten')
+const honderd = document.querySelector('#honderdPunten')
+const vijfhonderd = document.querySelector('#vijfhonderdPunten')
+const duizend = document.querySelector('#duizendpunten')
 
 let betAmount = 0;
-let chipsTotaal = 1000;
+let chipsTotaal = 10000;
 
 function check (value){
     if (value>chipsTotaal){
