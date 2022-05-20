@@ -50,6 +50,8 @@ body {
 }
 .reset span:last-child{
 	transform: rotate(-45deg);
+}
+
 .overlay{
 	position: fixed;
 	height: 100%;
