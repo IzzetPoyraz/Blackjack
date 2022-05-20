@@ -1,6 +1,5 @@
 'use strict';
 
-
 const SOORT = ['H', 'K', 'R', 'S'];
 const WAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'B', 'D', 'H', 'A']
 const SPELWAARDE = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '11']
@@ -20,7 +19,7 @@ class Kaart {
 }
 
 // maak deck aan
-function nieuwDeck() {
+const nieuwDeck = function() {
         
     const kaarten = [];
         
@@ -37,10 +36,10 @@ function nieuwDeck() {
     return kaarten;
 }
     
-const deck = new KaartBoek(nieuwDeck());
+export const deck = new KaartBoek(nieuwDeck());
 
 // shuffle deck
-function shuffleDeck(kaarten) {
+const shuffleDeck = function(kaarten) {
     for (let i = 0 ; i < kaarten.length ; i++) {
         let tempKaart = kaarten[i];
         let randomIndex = Math.floor(Math.random() * 104);

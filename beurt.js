@@ -3,12 +3,15 @@
 import "KaartBoek.js"
 
 let playerTotal = 0;
-let delerTotal = 0;
+let playerSTotal = 0;
+let dealerTotal = 0;
 let acePlayer = 0;
-let aceDeler = 0;
-let player = 0;
+let acePlayerS = 0;
+let aceDealer = 0;
+let player = [d,1];
 let playerStand = 0;
-let delerStand = 0;
+let playerSStand = 0;
+let dealerStand = 0;
 
 function selectCard () {
     return deck.kaarten.shift();
@@ -36,9 +39,9 @@ function aceTeller (card){
 function pickCard (player) {
     if (player===0){
         let pickedCard = selectCard()
-        delerTotal+=pickedCard.SPELWAARDE
-        aceDeler+=aceTeller(pickedCard)
-        if (waardeGroter(playerTotal, aceDeler)>21){
+        dealerTotal+=pickedCard.SPELWAARDE
+        aceDealer+=aceTeller(pickedCard)
+        if (waardeGroter(playerTotal, aceDealer)>21){
             // afhandeling na bust
         }
 
@@ -51,12 +54,17 @@ function pickCard (player) {
         }
     }
 }
+
+function split(player){
+
+}
+
 function play () {
     if (playerStand){
         pickCard(player)
     } else{
         player=0
-        while (delerStand){
+        while (dealerStand){
             pickCard(player)
         }
     }
