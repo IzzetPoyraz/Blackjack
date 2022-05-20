@@ -10,6 +10,7 @@ const honderd = document.querySelector('#honderdPunten')
 const vijfhonderd = document.querySelector('#vijfhonderdPunten')
 const duizend = document.querySelector('#duizendpunten')
 const reset = document.querySelector('.reset')
+const betIndicator = document.querySelector('#betamount')
 
 let betAmount = 0;
 let chipsTotaal = 10000;
@@ -28,6 +29,7 @@ function bet (value){
         chipsTotaal-=value
         console.log(betAmount)
         console.log(chipsTotaal)
+        betIndicator.textContent=betAmount
     }
 }
 
@@ -36,6 +38,7 @@ function resetBet (){
     betAmount=0
     console.log(betAmount)
     console.log(chipsTotaal)
+    betIndicator.textContent=betAmount
 }
 
 een.addEventListener("click", () =>{
