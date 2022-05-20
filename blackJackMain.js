@@ -44,6 +44,13 @@ class blackJack {
         return hand;
     }
 
+    drawCard(hand) {
+        let randomkaart = this.deck.shift();
+        hand.push(randomkaart);
+
+        return hand;
+    }
+
     checkSplit() {
         if(player.hand[0].spelWaarde === player.hand[1].spelWaarde){
             split.classList.toggle('display');
@@ -65,9 +72,10 @@ class blackJack {
 
 class Person extends blackJack {
     hand = [];
-    totaleKaartWaarde = 0;
+    totaleKaartWaarde;
     
     get cardValue() {
+        this.totaleKaartWaarde = 0;
         for (let i = 0 ; i < this.hand.length ; i++) {
             this.totaleKaartWaarde += this.hand[i].spelWaarde;
         }
@@ -86,6 +94,7 @@ class Dealer extends Person{
 
 class Player extends Person{
     splitHand = [];
+    canSplit = false;
 }
 
 // Maak objecten aan
@@ -101,4 +110,10 @@ console.log(game.deck);
 console.log(speler.hand);
 console.log(dealer.hand);
 
-console.log(speler.cardValue)
+console.log(speler.cardValue);
+
+speler.drawCard(speler.hand);
+console.log(speler.hand);
+console.log(speler.cardValue);
+
+
