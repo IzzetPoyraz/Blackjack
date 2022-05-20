@@ -19,15 +19,50 @@
         
     </header>
     <main>
-       
-        <div class="overlay"></div>
+        
+        <div class="overlay">
+            
+        </div>
 
         
         
         
         <!--start scherm-->
         <section class="overlayStart">
-            
+            <div class="modal-container" id="modal_container">
+                <div class="modal">
+                    <h2>BlackJack</h2>
+                    <p>- dealer and player<br>
+                    target 21</p>
+                    <p>cases - (Ace - 1 or 11 ) Face Cards > 10 = 10 </p>
+                    <p>Desgin the game Blackjack.</p>
+                    <p> 
+                        For a given deck of cards, there are two people playing. 
+                        The dealer and the player. The dealer takes two 
+                        cards and one of them is hidden. The player gets two 
+                        cards after that he can choose to HIT or STAND. 
+                        Get one more card or give dealer the move. 
+                        The dealer makes a move if his total value of card if
+                         less than 17.</p>
+                    <p>The first person to reach 21 wins. All face cards are worth 10 except for ace which can be 1 or 11 depending on the situation</p>
+                    <p>Basic Blackjack Rules: The goal of blackjack is to beat the dealer's hand without going over 21. 
+                        Face cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand. 
+                        Each player starts with two cards, one of the dealer's cards is hidden until the end. 
+                        To 'Hit' is to ask for another card. To 'Stand' is to hold your total and end your turn.
+                        If you go over 21 you bust, and the dealer wins regardless of the dealer's hand. 
+                        If you are dealt 21 from the start (Ace 8 10), you got a blackjack.
+                        Blackjack usually means you win 1.5 the amount of your bet. Depends on the casino. 
+                        Dealer will hit until his/her cards total 17 or higher. 
+                        Doubling is like a hit, only the bet is doubled and you only get one more card. 
+                        Split can be done when you have two of the same card - the pair is split into two hands.
+                        Splitting also doubles the bet, because each new hand is worth the original bet. 
+                        You can only double/split on the first move, or first move of a hand created by a split. 
+                        You cannot play on two aces after they are split. 
+                        You can double on a hand resulting from a split, tripling or quadrupling you bet.</p>
+                    
+                    <button id="close">sluiten</button>
+                </div>
+            </div>
        
             <button id="open"  class="PopUpButton info">i</button>
             <h1 class="ir" >Blackjack</h1>
@@ -42,6 +77,7 @@
                 </div>
             </form>
         </section>
+        
     i  <!--playing field-->
         <section>
             <section id="dealer">
