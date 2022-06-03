@@ -57,25 +57,27 @@ class blackJack {
             const item = hand[i];
             switch(i){
                 case 0 : p1Kaart.className = '';
-                p1Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
+                p1Kaart.style.display = 'block';
                 p1Kaart.classList.add('ir');
+                p1Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
                 console.log(`${item.kaartSoort}${item.kaartWaarde}`)
                 break;
                 case 1 : p2Kaart.className = '';
+                p2Kaart.style.display = 'block';
+                p2Kaart.classList.add('ir');
                 p2Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p1Kaart.classList.add('ir');
                 break;
                 case 2 : p3Kaart.className = '';
                 p3Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p1Kaart.classList.add('ir');
+                p3Kaart.classList.add('ir');
                 break;
                 case 3 : p4Kaart.className = ''; 
                 p4Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p1Kaart.classList.add('ir');
+                p4Kaart.classList.add('ir');
                 break;
                 case 4 : p5Kaart.className = '';
                 p5Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p1Kaart.classList.add('ir');
+                p5Kaart.classList.add('ir');
                 break;
                 case 5 : p6Kaart.className = '';
                 p6Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
