@@ -12,7 +12,20 @@
 // const stand = document.querySelector("#stand");
 // const double = document.querySelector("#double");
 
-//const p1Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(${kaartIndex})`);
+const p1Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(1)`);
+const p2Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(2)`);
+const p3Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(3)`);
+const p4Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(4)`);
+const p5Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(5)`);
+const p6Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(6)`);
+
+const d2Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(2)`);
+const d3Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(3)`);
+const d1Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(1)`);
+const d4Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(4)`);
+const d5Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(5)`);
+const d6Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(6)`);
+
 // hit.addEventListener('click', play);
 // stand.addEventListener('click', () => {
 //     playerStand = 1;
@@ -40,7 +53,39 @@ class blackJack {
             let randomkaart = this.deck.shift();
             hand.push(randomkaart);
         }
-        
+        for (let i = 0 ; i < hand.length ; i++) {
+            const item = hand[i];
+            switch(i){
+                case 0 : p1Kaart.className = '';
+                p1Kaart.style.display = 'block';
+                p1Kaart.classList.add('ir');
+                p1Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
+                console.log(`${item.kaartSoort}${item.kaartWaarde}`)
+                break;
+                case 1 : p2Kaart.className = '';
+                p2Kaart.style.display = 'block';
+                p2Kaart.classList.add('ir');
+                p2Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
+                break;
+                case 2 : p3Kaart.className = '';
+                p3Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
+                p3Kaart.classList.add('ir');
+                break;
+                case 3 : p4Kaart.className = ''; 
+                p4Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
+                p4Kaart.classList.add('ir');
+                break;
+                case 4 : p5Kaart.className = '';
+                p5Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
+                p5Kaart.classList.add('ir');
+                break;
+                case 5 : p6Kaart.className = '';
+                p6Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
+                p1Kaart.classList.add('ir');
+                break;
+            }
+            
+        }
         return hand;
     }
 

@@ -251,3 +251,28 @@ input::-webkit-inner-spin-button{
 		flex-wrap: nowrap;
 	}
 }
+section.players{
+	width: 100%;
+	height: 85vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.players>div{
+	width: 100%;
+	display: flex;
+}
+.players>div>div{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	margin-left: 3rem;
+}
+.players>div>div>span{
+	margin-left: -5rem;
+	display: none;
+}
+.players>div>.player1PlaceHolderSplit{
+	display: none;
+}
