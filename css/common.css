@@ -98,55 +98,156 @@ input::-webkit-inner-spin-button{
 	margin: 0;
 }
 .inzetChips{
-	width: 66vw;
+	width: 10vw;
 	position: fixed;
-	bottom: 1rem;
-	left: 100%;
-	margin-left: -83%;
 	background-color: #2B802E;
 	border: 10px solid #C7891F;
 	border-radius: 10px;
+	top: 5rem;
+	right: 1rem;
+	min-width: 45px;
 }
 .inzetChips ul{
 	display: flex;
+	flex-wrap: wrap;
 	padding: 0;
 	list-style: none;
-	margin-left: 1rem;
-	margin-right: 1rem;
-}
-.inzetChips ul li{
-	width: 14%;
-	height: auto;
-	margin: 0;
-	margin-bottom: 0.5rem;
-	margin-right: 1rem;
-}
-.inzetChips ul :last-child{
-	margin-right: 0;
+	align-items: center;
+	width: 100%;
+	justify-content: center;
 }
 .inzetChips ul li img{
 	width: 100%;
-    height: auto;
+	height: auto;
 }
-.inzetDif{
-	display: flex;
+.inzetChips ul li{
+	width: 90%;
+	height: auto;
+	margin: 0;
+	margin-bottom: 0.5rem;
 }
 #betamount{
-	text-align: center;
-	padding-right: 1rem;
-	padding-left: 1rem;
-	width: 2rem;
+	padding-right: 10px;
 	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+	text-align: center;
 	background-color: white;
 	border: 2px solid black;
 	border-radius: 10px;
 }
 .inzetChips div{
-	display: flex;
+	text-align: center;
 }
 .reset{
 	text-align: center;
-	padding-right: 1rem;
-	padding-left: 1rem;
-	margin-top: 20px;
+	margin-top: -15px;
+}
+.inzetChips ul :last-child{
+	margin-right: 0;
+}
+.inzetDif{
+	display: none;
+}
+.split, .hit, .stand, .double{
+	border-radius: 50%;
+	width: 22%;
+	height: auto;
+	color: white;
+	background-color: rgb(255,255,255,0.4);
+	border: 2px solid white;
+	position: fixed;
+	bottom: 1rem;
+	aspect-ratio: 1 / 1;
+	max-width: 7rem;
+}
+.hit:hover, .stand:hover, .double:hover{
+	background-color: rgba(255,255,255,0.8);
+	border-width: 3px;
+	transition: 200ms;
+	color: black;
+}
+#nonActive:hover{
+	background-color: rgba(0,0,0,1);
+	border-width: 3px;
+}
+.double{
+	left: 76%;
+}
+.split{
+	left: 10px;
+}
+#nonActive{
+	background-color: rgb(0,0,0,0.6);
+}
+.hit{
+	left: 26%;
+}
+.stand{
+	left: 51%;
+}
+.actions{
+	max-width: 100vw;
+}
+@media (min-width:600px){
+	.inzetChips{
+		width: 66vw;
+		position: fixed;
+		bottom: 1rem;
+		left: 100%;
+		margin-left: -83%;
+		background-color: #2B802E;
+		border: 10px solid #C7891F;
+		border-radius: 10px;
+		top: auto;
+		right: auto;
+	}
+	.inzetChips ul{
+		margin-left: 1rem;
+		margin-right: 1rem;
+		width: auto;
+	}
+	.inzetChips ul li{
+		width: 14%;
+		height: auto;
+		margin: 0;
+		margin-bottom: 0.5rem;
+		margin-right: 1rem;
+	}
+	#betamount{
+		text-align: center;
+		padding-right: 1rem;
+		padding-left: 1rem;
+		width: 2rem;
+		margin-left: auto;
+		background-color: white;
+		border: 2px solid black;
+		border-radius: 10px;
+		margin-right: 0;
+	}
+	.inzetChips div{
+		display: flex;
+	}
+	.reset{
+		padding-right: 1rem;
+		padding-left: 1rem;
+		margin-top: 20px;
+	}
+	.double{
+		right: 1.5rem;
+		left: auto;
+	}
+	.stand{
+		right: 9.5rem;
+		left: auto;
+	}
+	.hit{
+		right: 17.5rem;
+		left: auto;
+	}
+}
+@media (min-width:950px){
+	.inzetChips ul{
+		flex-wrap: nowrap;
+	}
 }
