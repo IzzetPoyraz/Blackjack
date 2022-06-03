@@ -7,7 +7,9 @@
     <script type="module" src="/blackJackMain.js" defer></script>
     <script type="module" src="/kaartBoek.js" defer></script>
     <script src="./popup.js" defer></script>
-    <script src="chips.js" defer></script>
+    <script src="./form.js" defer></script>
+    <script type="module" src="chips.js" defer></script>
+    <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/cards.css">
@@ -67,11 +69,11 @@
        
             <button id="open"  class="PopUpButton info">i</button>
             <h1 class="ir" >Blackjack</h1>
-            <form action="#">
+            <form id="post"  novalidate>
                 <div class="amountPlayers">
                     <label for="players">Enter the number of players<br>(MAX 4)</label>
-                    <input type="number" id="players" min="1" max="4">
-                    <div name="error">geen nummer tussen 1 en 4</div>
+                    <input type="number" placeholder="1" name="players" id="players" min="1" max="4" required>
+                    <div id="players-valid" class="inputDescription">error</div>
                 </div>
                 <div>
                     <button type="submit" class="ButtonPlay PopUpButton">Play</button>

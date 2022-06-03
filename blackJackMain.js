@@ -64,9 +64,6 @@ class blackJack {
         player.splitHand = player.hand.pop;
         split.classList.toggle('display');
     }
-        
-
-
 }
 
 
@@ -97,6 +94,7 @@ class Player extends Person{
     canSplit = false;
 }
 
+// Start game
 // Maak objecten aan
 const game = new blackJack();
 const dealer = new Dealer();
