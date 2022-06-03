@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 body {
-	background-color: #2B802E;
+	background-color: var(--bg);
+}
+html{font-family: 'Roboto', sans-serif;}
+:root {
+	--bg: #2B802E;
 }
 .PopUpButton,.open {
 	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);

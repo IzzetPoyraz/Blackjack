@@ -1,3 +1,6 @@
+@import "common.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 .modal-container {
     background-color: rgb(0, 0, 0, 0.3);
     position: fixed;
@@ -17,7 +20,7 @@
 }
 .modal{
     background: none;
-    background-color: #fff;
+    background-color: var(--bg);
     border-radius: 5%;
     opacity: 1;
     box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
