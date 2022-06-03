@@ -115,5 +115,3 @@ console.log(speler.cardValue);
 speler.drawCard(speler.hand);
 console.log(speler.hand);
 console.log(speler.cardValue);
-
-
