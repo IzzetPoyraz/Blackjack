@@ -26,9 +26,61 @@
     box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
     padding: 20px 40px;
     width: 500px;
-    max-width: 100%;
+    max-width: 60%;
+    max-height: 50%;
+    word-wrap: break-word;
     
 }
-.modal h2 {
-    text-align: center;
+.modal  {
+overflow: auto;}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: none; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+@media (min-width: 46.875em){
+    .modal-container {
+        background-color: rgb(0, 0, 0, 0.3);
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .modal-container.show{
+        pointer-events: auto;
+        opacity: 1;
+    }
+    .modal{
+        background: none;
+        background-color: var(--bg);
+        border-radius: 5%;
+        opacity: 1;
+        box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+        padding: 20px 40px;
+        width: 500px;
+        max-width: 100%;
+        
+    }
+    .modal h2 {
+        text-align: center;
+    }
 }
+
+
+    
