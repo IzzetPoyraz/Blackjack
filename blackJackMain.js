@@ -121,11 +121,19 @@ import { deck } from "./kaartBoek.js";
 let playerHand = [], dealerHand = [];
 let playerHandValue = 0, dealerHandValue = 0, dealerFirstCardValue = 0, playerSplitHandValue = 0;
 let playerCanSplit = false;
+let playerTurn = true;
 let gameDeck = deck.kaarten;
 
-//Select and control DOMelements
+
+// Set display none
 const playingFieldBox = document.querySelector('section.playingField-box');
-playingFieldBox.style.display = 'none'
+playingFieldBox.style.display = 'none';
+const splitBtn = document.getElementById('split');
+splitBtn.style.display = 'none';
+const doubleBtn = document.getElementById('double');
+doubleBtn.style.display = 'none';
+
+//Select and control DOMelements
 
 const startButton = document.getElementById('buttonPlay');
 const overlay = document.querySelector('.overlayStart');
@@ -179,6 +187,8 @@ function drawCardPlayer() {
     let randomkaart = gameDeck.shift();
     playerHand.push(randomkaart);
     playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
+    playerHandValue += randomkaart.spelWaarde;
+    playerCardsValue.innerHTML = `${playerHandValue}`;
 }
 
 function drawCardDealer() {
@@ -222,10 +232,18 @@ function checkWinner(){
     }
 }
 
+const hitBtn = document.querySelector('#hit');
+console.log(hitBtn)
+hitBtn.addEventListener('click', function () {
+    drawCardPlayer();
+});
+
 // Game
 
 drawCardsPlayer();
-checkSplit();
+if (checkSplit()) {
+    splitBtn.style.display = null;
+}
 console.log(playerHandValue);
 drawCardsDealer();
 console.log(dealerHandValue)
