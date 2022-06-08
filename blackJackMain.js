@@ -135,7 +135,7 @@ startButton.addEventListener('click', function () {
 });
 
 const playerCards = document.querySelector('.playerCards');
-console.log(playerCards);
+const dealerCards = document.querySelector('.dealerCards');
 
 // Game Functions
 
@@ -148,12 +148,6 @@ function drawCardsPlayer() {
         playerHandValue += card.spelWaarde;
         playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${card.kaartSoort}${card.kaartWaarde}"></span>`);
     });
-
-    placehholder.innerHTML = ""
-    for (let i = 0 ; i < hand.length ; i++) {
-        const item = hand[i];
-        placeholderPlayer.innerHTML += `<span class="ir ${item.kaartSoort}${item.kaartWaarde}"></span>`
-    }
 }
 
 function drawCardsDealer() {
@@ -161,14 +155,15 @@ function drawCardsDealer() {
         let randomkaart = gameDeck.shift();
         dealerHand.push(randomkaart);
     }
-    dealerHand.forEach(card => {
-        dealerHandValue += card.spelWaarde;
-    });
+
+    dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${dealerHand[0].kaartSoort}${dealerHand[0].kaartWaarde}"></span>`);
+    dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir B2"></span>`);
 }
 
 function drawCardPlayer() {
     let randomkaart = gameDeck.shift();
     playerHand.push(randomkaart);
+    playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
 }
 
 function drawCardDealer() {

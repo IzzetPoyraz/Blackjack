@@ -6,9 +6,6 @@
     overflow: hidden;
 }
 
-.card {
-    width: 100px;
-}
 h1 {
     background: url(../assets/BlackJack.svg);
     background-repeat: no-repeat;
@@ -19,6 +16,12 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     background-size: 30rem;
+}
+.B2{
+    background: url(../assets/2B.svg); 
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 3rem; 
 }
 .HA{
     background: url(../assets/HA.svg); 
