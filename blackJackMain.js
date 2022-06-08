@@ -144,7 +144,6 @@ const drawSound = new Audio('./assets/draw.mp3');
 const shuffleSound = new Audio('./assets/shuffle.mp3');
 const dealerCardsValue = document.querySelector('.dealerCardsValue')
 
-
 // Game Functions
 
 function drawCardsPlayer() {
@@ -193,6 +192,34 @@ function checkSplit() {
     }
     console.log(playerCanSplit);
     return playerCanSplit;
+}
+function checkValue(){
+    if(playerHandValue>21){
+        checkWinner();
+    }
+    if(playerHandValue===21){
+        dealerPlay();
+    }
+}
+function dealerPlay(){
+    while(dealerHandValue<playerHandValue && dealerHandValue<=21){
+        drawCardDealer;
+    }
+    checkWinner();
+}
+function checkWinner(){
+    if(playerHandValue>21){
+        console.log('You busted')
+    }
+    if(playerHandValue<dealerHandValue){
+        console.log("You lost")
+    }
+    if(playerHandValue>dealerHandValue){
+        console.log("You won");
+    }
+    if(playerHandValue === 21 && dealerHandValue === 21){
+            console.log('draw');
+    }
 }
 
 // Game
