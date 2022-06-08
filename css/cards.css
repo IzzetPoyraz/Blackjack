@@ -20,8 +20,8 @@ h1 {
 .B2{
     background: url(../assets/2B.svg); 
     background-repeat: no-repeat;
-    width: 10rem;
-    height: 3rem; 
+    padding: 5.6rem 4rem;
+    background-size: 8rem;
 }
 .HA{
     background: url(../assets/HA.svg); 

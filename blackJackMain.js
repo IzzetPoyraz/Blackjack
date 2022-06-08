@@ -119,11 +119,13 @@ import { deck } from "./kaartBoek.js";
 // Init Variables
 
 let playerHand = [], dealerHand = [];
-let playerHandValue = 0, dealerHandValue = 0, playerSplitHandValue = 0;
+let playerHandValue = 0, dealerHandValue = 0, dealerFirstCardValue = 0, playerSplitHandValue = 0;
 let playerCanSplit = false;
 let gameDeck = deck.kaarten;
 
 //Select and control DOMelements
+const playingFieldBox = document.querySelector('section.playingField-box');
+playingFieldBox.style.display = 'none'
 
 const startButton = document.getElementById('buttonPlay');
 const overlay = document.querySelector('.overlayStart');
@@ -132,12 +134,16 @@ startButton.addEventListener('click', function () {
     overlay.style.display = 'none';
     coloredOverlay.style.display = 'none';
     shuffleSound.play();
+    playingFieldBox.style.display = null;
 });
 
 const playerCards = document.querySelector('.playerCards');
+const playerCardsValue = document.querySelector('.playerCardsValue')
 const dealerCards = document.querySelector('.dealerCards');
 const drawSound = new Audio('./assets/draw.mp3');
 const shuffleSound = new Audio('./assets/shuffle.mp3');
+const dealerCardsValue = document.querySelector('.dealerCardsValue')
+
 
 // Game Functions
 
@@ -150,6 +156,7 @@ function drawCardsPlayer() {
         playerHandValue += card.spelWaarde;
         playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${card.kaartSoort}${card.kaartWaarde}"></span>`);
     });
+    playerCardsValue.innerHTML = `${playerHandValue}`
 }
 
 function drawCardsDealer() {
@@ -158,8 +165,15 @@ function drawCardsDealer() {
         dealerHand.push(randomkaart);
     }
 
+    dealerHand.forEach(card => {
+        dealerHandValue += card.spelWaarde;
+    });
+    dealerFirstCardValue = dealerHand[0].spelWaarde;
+
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${dealerHand[0].kaartSoort}${dealerHand[0].kaartWaarde}"></span>`);
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir B2"></span>`);
+    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
+
 }
 
 function drawCardPlayer() {
@@ -182,7 +196,6 @@ function checkSplit() {
 }
 
 // Game
-
 
 drawCardsPlayer();
 checkSplit();
