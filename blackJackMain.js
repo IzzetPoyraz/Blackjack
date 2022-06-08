@@ -1,162 +1,181 @@
 'use strict';
 
-//const p1Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(${kaartIncex})`);
-// hit.addEventListener('click', drawCards());
-// stand.addEventListener('click', stand())
-
-
-// spilt('click', blackJack.split());
-
-// const split = document.querySelector("#split");
-// const hit = document.querySelector("#hit");
-// const stand = document.querySelector("#stand");
-// const double = document.querySelector("#double");
-
-const p1Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(1)`);
-const p2Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(2)`);
-const p3Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(3)`);
-const p4Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(4)`);
-const p5Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(5)`);
-const p6Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(6)`);
-
-const d2Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(2)`);
-const d3Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(3)`);
-const d1Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(1)`);
-const d4Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(4)`);
-const d5Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(5)`);
-const d6Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(6)`);
-
-// hit.addEventListener('click', play);
-// stand.addEventListener('click', () => {
-//     playerStand = 1;
-//     play();
-// });
-
-// spilt('click', split());
 import { deck } from "./kaartBoek.js";
 
-class blackJack {
-    firstDraw = true;
-    constructor() {
-        this.deck = deck.kaarten;
+//     spilt(){
+//         player.splitHand = player.hand.pop;
+//         split.classList.toggle('display');
+//     }
+// }
+
+// Init Variables
+
+let playerHand = [], dealerHand = [];
+let playerHandValue = 0, dealerHandValue = 0, dealerFirstCardValue = 0, playerSplitHandValue = 0;
+let playerCanSplit = false;
+let playerTurn = true;
+let gameDeck = deck.kaarten;
+
+// Set display none
+const playingFieldBox = document.querySelector('section.playingField-box');
+playingFieldBox.style.display = 'none';
+const splitBtn = document.getElementById('split');
+splitBtn.style.display = 'none';
+const doubleBtn = document.getElementById('double');
+doubleBtn.style.display = 'none';
+
+//Select and control DOMelements
+
+const startButton = document.getElementById('buttonPlay');
+const overlay = document.querySelector('.overlayStart');
+const coloredOverlay = document.querySelector('.overlay');
+startButton.addEventListener('click', function () {
+    overlay.style.display = 'none';
+    coloredOverlay.style.display = 'none';
+    shuffleSound.play();
+    playingFieldBox.style.display = null;
+});
+
+const playerCards = document.querySelector('.playerCards');
+const playerCardsValue = document.querySelector('.playerCardsValue')
+const dealerCards = document.querySelector('.dealerCards');
+const drawSound = new Audio('./assets/draw.mp3');
+const shuffleSound = new Audio('./assets/shuffle.mp3');
+const dealerCardsValue = document.querySelector('.dealerCardsValue')
+
+// Game Functions
+
+function drawCardsPlayer() {
+    for (let i = 0 ; i < 2 ; i++) {
+        let randomkaart = gameDeck.shift();
+        playerHand.push(randomkaart);
     }
-    startGame() {
-        let dealer = new Dealer();
-        let player = new Player();
+    playerHand.forEach(card => {
+        playerHandValue += card.spelWaarde;
+        playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${card.kaartSoort}${card.kaartWaarde}"></span>`);
+    });
+    playerCardsValue.innerHTML = `${playerHandValue}`
+}
+
+function drawCardsDealer() {
+    for (let i = 0 ; i < 2 ; i++) {
+        let randomkaart = gameDeck.shift();
+        dealerHand.push(randomkaart);
+    }
+
+    dealerHand.forEach(card => {
+        dealerHandValue += card.spelWaarde;
+    });
+    dealerFirstCardValue = dealerHand[0].spelWaarde;
+
+    dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${dealerHand[0].kaartSoort}${dealerHand[0].kaartWaarde}"></span>`);
+    dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir B2"></span>`);
+    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
+
+}
+
+function drawCardPlayer() {
+    let randomkaart = gameDeck.shift();
+    playerHand.push(randomkaart);
+    playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
+    playerHandValue += randomkaart.spelWaarde;
+    playerCardsValue.innerHTML = `${playerHandValue}`;
+}
+
+function drawCardDealer() {
+    let randomkaart = gameDeck.shift();
+    dealerHand.push(randomkaart);
+    dealerHandValue += randomkaart.spelWaarde;
+    dealerCardsValue.innerHTML = `${dealerHandValue}`
+    Array.from(dealerCards.children).forEach(element => {
+        if (element.classList.contains('B2')) {
+            element.classList.remove('B2');
+            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`)
+        }
+    });
+    dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
     
-    }
-    // neem kaarten van het geshuffelde deck
-    drawCards() {
-        let hand = [];
-        
-        for (let i = 0 ; i < 2 ; i++) {
-            let randomkaart = this.deck.shift();
-            hand.push(randomkaart);
-        }
-        for (let i = 0 ; i < hand.length ; i++) {
-            const item = hand[i];
-            switch(i){
-                case 0 : p1Kaart.className = '';
-                p1Kaart.style.display = 'block';
-                p1Kaart.classList.add('ir');
-                p1Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                console.log(`${item.kaartSoort}${item.kaartWaarde}`)
-                break;
-                case 1 : p2Kaart.className = '';
-                p2Kaart.style.display = 'block';
-                p2Kaart.classList.add('ir');
-                p2Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                break;
-                case 2 : p3Kaart.className = '';
-                p3Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p3Kaart.classList.add('ir');
-                break;
-                case 3 : p4Kaart.className = ''; 
-                p4Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p4Kaart.classList.add('ir');
-                break;
-                case 4 : p5Kaart.className = '';
-                p5Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p5Kaart.classList.add('ir');
-                break;
-                case 5 : p6Kaart.className = '';
-                p6Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p1Kaart.classList.add('ir');
-                break;
-            }
-            
-        }
-        return hand;
-    }
-
-    drawCard(hand) {
-        let randomkaart = this.deck.shift();
-        hand.push(randomkaart);
-
-        return hand;
-    }
-
-    checkSplit() {
-        if(player.hand[0].spelWaarde === player.hand[1].spelWaarde){
-            split.classList.toggle('display');
-            return true;
-        }
-        else{
-            false;
-        }
-    }
-    spilt(){
-        player.splitHand = player.hand.pop;
-        split.classList.toggle('display');
-    }
-        
-
-
 }
 
+function checkSplit() {
+    if (playerHand[0].spelWaarde === playerHand[1].spelWaarde) {
+        playerCanSplit = true;
+    }
+    console.log(playerCanSplit);
+    return playerCanSplit;
+}
 
-class Person extends blackJack {
-    hand = [];
-    totaleKaartWaarde;
+function checkValue(){
+    if(playerHandValue>21){
+        checkWinner();
+    }
+    if(playerHandValue===21){
+        dealerPlay();
+    }
+}
+
+function dealerPlay(){
+    while(dealerHandValue<=playerHandValue && dealerHandValue<=21){
+        drawCardDealer();
+    }
+    checkWinner();
+}
+
+function checkWinner(){
+    dealerCardsValue.innerHTML = `${dealerHandValue}`
+    if(playerHandValue > 21){
+        console.log('You busted')
+    }
+    else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
+        console.log("You lost")
+    }
+    else if(playerHandValue > dealerHandValue || dealerHandValue > 21){
+        console.log("You won");
+    }
+    else if(playerHandValue === 21 && dealerHandValue === 21){
+         console.log('draw');
+    }
+}
+
+const hitBtn = document.querySelector('#hit');
+console.log(hitBtn)
+hitBtn.addEventListener('click', function () {
+    checkValue();
+    if (playerTurn) {
+        drawCardPlayer();
+        checkValue();
+        if (playerCanSplit) {
+            splitBtn.style.display = 'none';
+        }
+    }
+});
+
+const standBtn = document.querySelector('#stand');
+standBtn.addEventListener('click', function () {
+    dealerPlay();
+    playerTurn === false;
+});
+
+function startGame() {
+    drawCardsPlayer();
+    if (playerHandValue === 21) {
+        dealerPlay();
+    }
+    if (checkSplit()) {
+        splitBtn.style.display = null;
+    }
+    console.log(playerHandValue);
+    drawCardsDealer();
+    console.log(dealerHandValue)
+}
+
+function stopGame() {
     
-    get cardValue() {
-        this.totaleKaartWaarde = 0;
-        for (let i = 0 ; i < this.hand.length ; i++) {
-            this.totaleKaartWaarde += this.hand[i].spelWaarde;
-        }
-        return this.totaleKaartWaarde;
-    }
-
-    stand() {
-
-    }
-
 }
 
-class Dealer extends Person{
+// Game
 
-}
+startGame();
 
-class Player extends Person{
-    splitHand = [];
-    canSplit = false;
-}
-
-// Maak objecten aan
-const game = new blackJack();
-const dealer = new Dealer();
-const speler = new Player();
-
-// Deal elke speler en dealer eerste twee kaarten
-speler.hand = speler.drawCards();
-dealer.hand = dealer.drawCards();
-
-console.log(game.deck);
-console.log(speler.hand);
-console.log(dealer.hand);
-
-console.log(speler.cardValue);
-
-speler.drawCard(speler.hand);
-console.log(speler.hand);
-console.log(speler.cardValue);
+console.log(playerHand);
+console.log(dealerHand);

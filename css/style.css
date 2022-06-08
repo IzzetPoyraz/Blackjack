@@ -1,6 +1,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-main section h1, form {
+main section h1, form{
     text-align: center;
+}
+
+.start-button-box {
+    display: flex;
+    justify-content: center;
 }

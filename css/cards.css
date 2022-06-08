@@ -5,6 +5,7 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
 h1 {
     background: url(../assets/BlackJack.svg);
     background-repeat: no-repeat;
@@ -15,6 +16,12 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     background-size: 30rem;
+}
+.B2{
+    background: url(../assets/2B.svg); 
+    background-repeat: no-repeat;
+    padding: 5.6rem 4rem;
+    background-size: 8rem;
 }
 .HA{
     background: url(../assets/HA.svg); 
