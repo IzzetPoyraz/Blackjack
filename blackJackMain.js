@@ -131,10 +131,13 @@ const coloredOverlay = document.querySelector('.overlay');
 startButton.addEventListener('click', function () {
     overlay.style.display = 'none';
     coloredOverlay.style.display = 'none';
+    shuffleSound.play();
 });
 
 const playerCards = document.querySelector('.playerCards');
 const dealerCards = document.querySelector('.dealerCards');
+const drawSound = new Audio('./assets/draw.mp3');
+const shuffleSound = new Audio('./assets/shuffle.mp3');
 
 // Game Functions
 
