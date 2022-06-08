@@ -1,3 +1,10 @@
+:root{
+	--darkRed: #7E0000;
+    --lightRed: #FF0000;
+	--lightRedTransparent: #ff000081;
+	--textWhite: #eeeeee;
+}
+
 body {
 	background-color: #2B802E;
 }
@@ -275,4 +282,12 @@ section.players{
 }
 .players>div>.player1PlaceHolderSplit{
 	display: none;
+}
+button:not(.ButtonPlay, .open){
+	color: var(--textWhite);
+	border-radius: 5rem;
+	width: 6rem;
+	height: 6rem;
+	border: solid 3px var(--darkRed);
+	background-color: var(--lightRedTransparent);
 }
