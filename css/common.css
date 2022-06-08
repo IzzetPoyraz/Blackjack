@@ -297,6 +297,12 @@ input::-webkit-inner-spin-button{
 	gap: 1rem;
 }
 
+.player-box {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
 .playerCards{
 	gap: 1rem;
 	display: flex;
@@ -330,13 +336,5 @@ input::-webkit-inner-spin-button{
 
 /* 31.25em = 500px */
 @media (min-width: 31.25em) {
-	.dealer {
-		flex-direction: row;
-		align-items: flex-start;
-	}
 
-	.player {
-		flex-direction: row;
-		align-items: flex-start;
-	}
 }
