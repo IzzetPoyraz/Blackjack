@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="/blackJackMain.js" defer></script>
-    <script type="module" src="/kaartBoek.js" defer></script>
+    <script type="module" src="/blackJackMain.js"></script>
+    <script type="module" src="/kaartBoek.js"></script>
     <script src="./popup.js" defer></script>
-    <script src="./form.js" defer></script>
-    <script type="module" src="chips.js" defer></script>
+    <!-- <script src="./form.js" defer></script> -->
+    <!-- <script type="module" src="chips.js"></script> -->
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/common.css">
@@ -69,7 +69,10 @@
        
             <button id="open"  class="PopUpButton info">i</button>
             <h1 class="ir" >Blackjack</h1>
-            <form id="post"  novalidate>
+            <div class="start-button-box">
+                <button class="ButtonPlay PopUpButton" id="buttonPlay">Play</button>
+            </div>
+            <!-- <form id="post"  novalidate>
                 <div class="amountPlayers">
                     <label for="players">Enter the number of players<br>(MAX 4)</label>
                     <input type="number" placeholder="1" name="players" id="players" min="1" max="4" required>
@@ -78,13 +81,14 @@
                 <div>
                     <button type="submit" class="ButtonPlay PopUpButton">Play</button>
                 </div>
-            </form>
+            </form> -->
+
         </section>
         
-    i  <!--playing field-->
+      <!--playing field-->
         <section>
             <section id="dealer">
-              <p></p>
+                <p class="cardsTotalValue"></p>
                 <img src="assets/" alt="card deck">
                 <div class="dealerPlaceHolder">
                     <span class="ir RT"></span><span></span><span></span><span></span><span></span><span></span>
@@ -94,16 +98,12 @@
                 </div>
             </section>
             <section id="player 1">
-                <p></p>
-                <img src="assets/" alt="card placeholder">
-                <div class="player1PlaceHolder">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                <p class="cardsTotalValue"></p>
+                <img src="assets/" alt="card placeholder"><div class="player1PlaceHolder">
                 </div>
-                <div class="player1PlaceHolderSplit">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
+                <div class="player1PlaceHolderSplit"></div>
             </section>
-            <section id="player 2">
+            <!-- <section id="player 2">
                 <p></p>
                 <img src="assets/" alt="card placeholder">
                 <div class="player2PlaceHolder">
@@ -132,7 +132,7 @@
                 <div class="player4PlaceHolderSplit">
                     <span></span><span></span><span></span><span></span><span></span><span></span>
                 </div>
-            </section>
+            </section> -->
             <button id="split">split</button>
             <button id="hit">hit</button>
             <button id="stand">stand</button>
