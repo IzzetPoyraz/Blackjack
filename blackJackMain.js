@@ -169,7 +169,7 @@ function drawCardsDealer() {
 
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${dealerHand[0].kaartSoort}${dealerHand[0].kaartWaarde}"></span>`);
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir B2"></span>`);
-    dealerCardsValue.innerHTML = `${dealerFirstCardValue}`
+    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
 
 }
 

@@ -268,6 +268,9 @@ input::-webkit-inner-spin-button{
 .dealer {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .dealerCards {
@@ -280,16 +283,18 @@ input::-webkit-inner-spin-button{
 	align-items: center;
 	justify-content: center;
 	background-color: white;
-	height: 2em;
-	width: 2em;
+	height: 2rem;
+	width: 2rem;
 	border-radius: 50%;
 	border: 1px solid red;
-	margin-right: 1rem;
 }
 
 .player{
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .playerCards{
@@ -307,11 +312,31 @@ input::-webkit-inner-spin-button{
 .player1PlaceHolderSplit{
 	display: none;
 }
-button:not(.ButtonPlay, .open){
+
+.actionButtons {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.actionButtons button{
 	color: var(--textWhite);
 	border-radius: 5rem;
-	width: 6rem;
-	height: 6rem;
+	width: 4rem;
+	height: 4rem;
 	border: solid 3px var(--darkRed);
 	background-color: var(--lightRedTransparent);
+}
+
+/* 31.25em = 500px */
+@media (min-width: 31.25em) {
+	.dealer {
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	.player {
+		flex-direction: row;
+		align-items: flex-start;
+	}
 }
