@@ -129,11 +129,13 @@ let gameDeck = deck.kaarten;
 const startButton = document.getElementById('buttonPlay');
 const overlay = document.querySelector('.overlayStart');
 const coloredOverlay = document.querySelector('.overlay');
-console.log(overlay)
 startButton.addEventListener('click', function () {
     overlay.style.display = 'none';
     coloredOverlay.style.display = 'none';
 });
+
+const playerCards = document.querySelector('.playerCards');
+console.log(playerCards);
 
 // Game Functions
 
@@ -144,6 +146,7 @@ function drawCardsPlayer() {
     }
     playerHand.forEach(card => {
         playerHandValue += card.spelWaarde;
+        playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${card.kaartSoort}${card.kaartWaarde}"></span>`);
     });
 }
 
@@ -177,7 +180,6 @@ function checkSplit() {
 
 // Game
 
-console.log(gameDeck)
 
 drawCardsPlayer();
 checkSplit();
