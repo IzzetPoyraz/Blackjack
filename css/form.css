@@ -1,0 +1,25 @@
+:root {
+    --error-color: rgb(200, 0, 0);
+    --button-color: rgb(0, 90, 240);
+    --button-hover-color: rgb(20, 110, 220);
+    --border-radius: 5px;
+}
+
+label,
+legend {
+  display: block;
+  font-size: 1.375em;
+  font-weight: 600;
+  margin: 0 0 0.5em 0;
+}
+
+div.inputDescription {
+    margin-top: 0.25em;
+    color: var(--error-color);
+    display: none;
+}
+
+input.invalid {
+    color: var(--error-color);
+    border-color: var(--error-color);
+}

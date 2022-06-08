@@ -12,20 +12,6 @@
 // const stand = document.querySelector("#stand");
 // const double = document.querySelector("#double");
 
-const p1Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(1)`);
-const p2Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(2)`);
-const p3Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(3)`);
-const p4Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(4)`);
-const p5Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(5)`);
-const p6Kaart = document.querySelector(`.player1PlaceHolder > span:nth-child(6)`);
-
-const d2Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(2)`);
-const d3Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(3)`);
-const d1Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(1)`);
-const d4Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(4)`);
-const d5Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(5)`);
-const d6Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(6)`);
-
 // hit.addEventListener('click', play);
 // stand.addEventListener('click', () => {
 //     playerStand = 1;
@@ -33,130 +19,173 @@ const d6Kaart = document.querySelector(`.dealerPlaceHolder > span:nth-child(6)`)
 // });
 
 // spilt('click', split());
+
+
+
 import { deck } from "./kaartBoek.js";
 
-class blackJack {
-    firstDraw = true;
-    constructor() {
-        this.deck = deck.kaarten;
-    }
-    startGame() {
-        let dealer = new Dealer();
-        let player = new Player();
-    
-    }
-    // neem kaarten van het geshuffelde deck
-    drawCards() {
-        let hand = [];
+// class blackJack {
+//     firstDraw = true;
+//     constructor() {
+//         this.deck = deck.kaarten;
+//     }
+//     startGame() {
+//         const overlay = document.querySelector('.overlayStart');
+//         overlay.style.display = 'none';
+//     }
+//     // neem kaarten van het geshuffelde deck
+//     drawCards() {
+//         let hand = [];
         
-        for (let i = 0 ; i < 2 ; i++) {
-            let randomkaart = this.deck.shift();
-            hand.push(randomkaart);
-        }
-        for (let i = 0 ; i < hand.length ; i++) {
-            const item = hand[i];
-            switch(i){
-                case 0 : p1Kaart.className = '';
-                p1Kaart.style.display = 'block';
-                p1Kaart.classList.add('ir');
-                p1Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                console.log(`${item.kaartSoort}${item.kaartWaarde}`)
-                break;
-                case 1 : p2Kaart.className = '';
-                p2Kaart.style.display = 'block';
-                p2Kaart.classList.add('ir');
-                p2Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                break;
-                case 2 : p3Kaart.className = '';
-                p3Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p3Kaart.classList.add('ir');
-                break;
-                case 3 : p4Kaart.className = ''; 
-                p4Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p4Kaart.classList.add('ir');
-                break;
-                case 4 : p5Kaart.className = '';
-                p5Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p5Kaart.classList.add('ir');
-                break;
-                case 5 : p6Kaart.className = '';
-                p6Kaart.classList.add(`${item.kaartSoort}${item.kaartWaarde}`);
-                p1Kaart.classList.add('ir');
-                break;
-            }
-            
-        }
-        return hand;
-    }
-
-    drawCard(hand) {
-        let randomkaart = this.deck.shift();
-        hand.push(randomkaart);
-
-        return hand;
-    }
-
-    checkSplit() {
-        if(player.hand[0].spelWaarde === player.hand[1].spelWaarde){
-            split.classList.toggle('display');
-            return true;
-        }
-        else{
-            false;
-        }
-    }
-    spilt(){
-        player.splitHand = player.hand.pop;
-        split.classList.toggle('display');
-    }
+//         for (let i = 0 ; i < 2 ; i++) {
+//             let randomkaart = this.deck.shift();
+//             hand.push(randomkaart);
+//         }
         
+//         return hand;
+//     }
+
+//     drawCard(hand) {
+//         let randomkaart = this.deck.shift();
+//         hand.push(randomkaart);
+
+//         return hand;
+//     }
+
+//     checkSplit() {
+//         if(player.hand[0].spelWaarde === player.hand[1].spelWaarde){
+//             split.classList.toggle('display');
+//             return true;
+//         }
+//         else{
+//             false;
+//         }
+//     }
+//     spilt(){
+//         player.splitHand = player.hand.pop;
+//         split.classList.toggle('display');
+//     }
+// }
 
 
-}
-
-
-class Person extends blackJack {
-    hand = [];
-    totaleKaartWaarde;
+// class Person extends blackJack {
+//     hand = [];
+//     totaleKaartWaarde;
     
-    get cardValue() {
-        this.totaleKaartWaarde = 0;
-        for (let i = 0 ; i < this.hand.length ; i++) {
-            this.totaleKaartWaarde += this.hand[i].spelWaarde;
-        }
-        return this.totaleKaartWaarde;
-    }
+//     get cardValue() {
+//         this.totaleKaartWaarde = 0;
+//         for (let i = 0 ; i < this.hand.length ; i++) {
+//             this.totaleKaartWaarde += this.hand[i].spelWaarde;
+//         }
+//         return this.totaleKaartWaarde;
+//     }
 
-    stand() {
+//     stand() {
 
-    }
+//     }
 
-}
+// }
 
-class Dealer extends Person{
+// class Dealer extends Person{
 
-}
+// }
 
-class Player extends Person{
-    splitHand = [];
-    canSplit = false;
-}
+// class Player extends Person{
+//     splitHand = [];
+//     canSplit = false;
+// }
 
+// const game = new blackJack();
+// const player = new Player();
+// const dealer = new Dealer();
+// const overlay = document.querySelector('.overlayStart');
+// console.log(overlay);
+// const startButton = document.getElementById('buttonPlay');
+// startButton.addEventListener('click', game.startGame());
+
+// Start game
 // Maak objecten aan
-const game = new blackJack();
-const dealer = new Dealer();
-const speler = new Player();
 
-// Deal elke speler en dealer eerste twee kaarten
-speler.hand = speler.drawCards();
-dealer.hand = dealer.drawCards();
+// console.log(game.deck);
+// console.log(player.hand);
+// console.log(dealer.hand);
 
-console.log(game.deck);
-console.log(speler.hand);
-console.log(dealer.hand);
+// console.log(player.cardValue);
 
-console.log(speler.cardValue);
+// player.drawCard(player.hand);
+// console.log(player.hand);
+// console.log(player.cardValue);
 
-speler.drawCard(speler.hand);
-console.log(speler.hand);
-console.log(speler.cardValue);
+// Init Variables
+
+let playerHand = [], dealerHand = [];
+let playerHandValue = 0, dealerHandValue = 0, playerSplitHandValue = 0;
+let playerCanSplit = false;
+let gameDeck = deck.kaarten;
+
+//Select and control DOMelements
+
+const startButton = document.getElementById('buttonPlay');
+const overlay = document.querySelector('.overlayStart');
+const coloredOverlay = document.querySelector('.overlay');
+startButton.addEventListener('click', function () {
+    overlay.style.display = 'none';
+    coloredOverlay.style.display = 'none';
+});
+
+const playerCards = document.querySelector('.playerCards');
+const dealerCards = document.querySelector('.dealerCards');
+
+// Game Functions
+
+function drawCardsPlayer() {
+    for (let i = 0 ; i < 2 ; i++) {
+        let randomkaart = gameDeck.shift();
+        playerHand.push(randomkaart);
+    }
+    playerHand.forEach(card => {
+        playerHandValue += card.spelWaarde;
+        playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${card.kaartSoort}${card.kaartWaarde}"></span>`);
+    });
+}
+
+function drawCardsDealer() {
+    for (let i = 0 ; i < 2 ; i++) {
+        let randomkaart = gameDeck.shift();
+        dealerHand.push(randomkaart);
+    }
+
+    dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${dealerHand[0].kaartSoort}${dealerHand[0].kaartWaarde}"></span>`);
+    dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir B2"></span>`);
+}
+
+function drawCardPlayer() {
+    let randomkaart = gameDeck.shift();
+    playerHand.push(randomkaart);
+    playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
+}
+
+function drawCardDealer() {
+    let randomkaart = gameDeck.shift();
+    dealerHand.push(randomkaart);
+}
+
+function checkSplit() {
+    if (playerHand[0].spelWaarde === playerHand[1].spelWaarde) {
+        playerCanSplit = true;
+    }
+    console.log(playerCanSplit);
+    return playerCanSplit;
+}
+
+// Game
+
+
+drawCardsPlayer();
+checkSplit();
+console.log(playerHandValue);
+drawCardsDealer();
+console.log(dealerHandValue)
+
+console.log(playerHand);
+console.log(dealerHand);
