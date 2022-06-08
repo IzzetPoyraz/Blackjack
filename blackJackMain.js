@@ -148,6 +148,12 @@ function drawCardsPlayer() {
         playerHandValue += card.spelWaarde;
         playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${card.kaartSoort}${card.kaartWaarde}"></span>`);
     });
+
+    placehholder.innerHTML = ""
+    for (let i = 0 ; i < hand.length ; i++) {
+        const item = hand[i];
+        placeholderPlayer.innerHTML += `<span class="ir ${item.kaartSoort}${item.kaartWaarde}"></span>`
+    }
 }
 
 function drawCardsDealer() {
