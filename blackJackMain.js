@@ -154,15 +154,19 @@ function drawCards(hand, handValue) {
     handValue = hand.forEach(card => {
         handValue += card.spelWaarde;
     });
-    
+
+    placehholder.innerHTML = ""
+    for (let i = 0 ; i < hand.length ; i++) {
+        const item = hand[i];
+        placeholderPlayer.innerHTML += `<span class="ir ${item.kaartSoort}${item.kaartWaarde}"></span>`
+    }
 }
 
 function drawCard(hand) {
     let randomkaart = this.deck.shift();
     hand.push(randomkaart);
 
-    
-
+    placeholderPlayer.innerHTML += `<span class="ir ${item.kaartSoort}${item.kaartWaarde}"></span>`
 }
 
 function checkSplit() {
