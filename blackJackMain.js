@@ -117,13 +117,6 @@ import { deck } from "./kaartBoek.js";
 // console.log(player.hand);
 // console.log(player.cardValue);
 
-
-
-
-
-
-
-
 // Init Variables
 
 let playerHand = [], dealerHand = [];
@@ -144,15 +137,13 @@ startButton.addEventListener('click', function () {
 
 // Game Functions
 
-function drawCards(hand, handValue) {
-            
+function drawCardsPlayer() {
     for (let i = 0 ; i < 2 ; i++) {
         let randomkaart = gameDeck.shift();
-        hand.push(randomkaart);
+        playerHand.push(randomkaart);
     }
-
-    handValue = hand.forEach(card => {
-        handValue += card.spelWaarde;
+    playerHand.forEach(card => {
+        playerHandValue += card.spelWaarde;
     });
 
     placehholder.innerHTML = ""
@@ -162,34 +153,43 @@ function drawCards(hand, handValue) {
     }
 }
 
-function drawCard(hand) {
-    let randomkaart = this.deck.shift();
-    hand.push(randomkaart);
+function drawCardsDealer() {
+    for (let i = 0 ; i < 2 ; i++) {
+        let randomkaart = gameDeck.shift();
+        dealerHand.push(randomkaart);
+    }
+    dealerHand.forEach(card => {
+        dealerHandValue += card.spelWaarde;
+    });
+}
 
-    placeholderPlayer.innerHTML += `<span class="ir ${item.kaartSoort}${item.kaartWaarde}"></span>`
+function drawCardPlayer() {
+    let randomkaart = gameDeck.shift();
+    playerHand.push(randomkaart);
+}
+
+function drawCardDealer() {
+    let randomkaart = gameDeck.shift();
+    dealerHand.push(randomkaart);
 }
 
 function checkSplit() {
-    if (player.hand[0].spelWaarde === player.hand[1].spelWaarde) {
+    if (playerHand[0].spelWaarde === playerHand[1].spelWaarde) {
         playerCanSplit = true;
-
     }
+    console.log(playerCanSplit);
+    return playerCanSplit;
 }
 
 // Game
 
 console.log(gameDeck)
 
-drawCards(playerHand, playerHandValue);
+drawCardsPlayer();
+checkSplit();
 console.log(playerHandValue);
-drawCards(dealerHand, dealerHandValue);
+drawCardsDealer();
 console.log(dealerHandValue)
-
 
 console.log(playerHand);
 console.log(dealerHand);
-
-
-
-
-
