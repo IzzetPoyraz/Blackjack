@@ -203,6 +203,7 @@ function checkSplit() {
     console.log(playerCanSplit);
     return playerCanSplit;
 }
+
 function checkValue(){
     if(playerHandValue>21){
         checkWinner();
@@ -211,24 +212,26 @@ function checkValue(){
         dealerPlay();
     }
 }
+
 function dealerPlay(){
     while(dealerHandValue<playerHandValue && dealerHandValue<=21){
-        drawCardDealer;
+        drawCardDealer();
     }
     checkWinner();
 }
+
 function checkWinner(){
     if(playerHandValue>21){
         console.log('You busted')
     }
-    if(playerHandValue<dealerHandValue){
+    else if(playerHandValue<dealerHandValue){
         console.log("You lost")
     }
-    if(playerHandValue>dealerHandValue){
+    else if(playerHandValue>dealerHandValue){
         console.log("You won");
     }
-    if(playerHandValue === 21 && dealerHandValue === 21){
-            console.log('draw');
+    else if(playerHandValue === 21 && dealerHandValue === 21){
+         console.log('draw');
     }
 }
 
@@ -236,6 +239,15 @@ const hitBtn = document.querySelector('#hit');
 console.log(hitBtn)
 hitBtn.addEventListener('click', function () {
     drawCardPlayer();
+    checkValue();
+    if (playerCanSplit) {
+        splitBtn.style.display = 'none';
+    }
+});
+
+const standBtn = document.querySelector('#stand');
+standBtn.addEventListener('click', function () {
+    dealerPlay();
 });
 
 // Game
