@@ -168,9 +168,11 @@ function drawCardDealer() {
 }
 
 function checkSplit() {
-    if (player.hand[0].spelWaarde === player.hand[1].spelWaarde) {
+    if (playerHand[0].spelWaarde === playerHand[1].spelWaarde) {
         playerCanSplit = true;
     }
+    console.log(playerCanSplit);
+    return playerCanSplit;
 }
 
 // Game
@@ -178,6 +180,7 @@ function checkSplit() {
 console.log(gameDeck)
 
 drawCardsPlayer();
+checkSplit();
 console.log(playerHandValue);
 drawCardsDealer();
 console.log(dealerHandValue)
