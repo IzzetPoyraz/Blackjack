@@ -16,6 +16,7 @@ let playerCanSplit = false;
 let playerTurn = true;
 let splitTurn = false;
 let gameDeck = deck.kaarten;
+let isSplit = false;
 
 let playerAce = 0;
 let splitAce = 0;
@@ -204,18 +205,34 @@ dealerWhenBusted()
 }
 
 function checkWinner(){
-    if(playerHandValue > 21 && playerSplitHandValue>21){
-        console.log('You busted')
-    }
-    else if(playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21){
-        console.log("You lost");
-        challengesNSFW[challengesNSFW.length-1];
-    }
-    else if(21>playerHandValue > dealerHandValue || 21>playerSplitHandValue > dealerHandValue || dealerHandValue > 21){
-        console.log("You won");
-    }
-    else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
-         console.log('draw');
+    if (isSplit){
+        if(playerHandValue > 21 && playerSplitHandValue>21){
+            console.log('You busted')
+        }
+        else if(playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21){
+            console.log("You lost");
+            challengesNSFW[challengesNSFW.length-1];
+        }
+        else if(21>playerHandValue > dealerHandValue || 21>playerSplitHandValue > dealerHandValue || dealerHandValue > 21){
+            console.log("You won");
+        }
+        else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
+             console.log('draw');
+        }
+    } else {
+        if(playerHandValue > 21){
+            console.log('You busted')
+        }
+        else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
+            console.log("You lost");
+            challengesNSFW[challengesNSFW.length-1];
+        }
+        else if(21>playerHandValue > dealerHandValue || dealerHandValue > 21){
+            console.log("You won");
+        }
+        else if(playerHandValue === dealerHandValue){
+            console.log('draw');
+        }
     }
 }
 
@@ -305,6 +322,7 @@ splitBtn.addEventListener('click', function () {
     splitBtn.style.display='none'
     splitWaarde.style.display='block'
     splitTurn = true;
+    isSplit = true;
     split()
 })
 
