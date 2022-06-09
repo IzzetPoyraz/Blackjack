@@ -74,6 +74,10 @@ function drawCardsPlayer() {
         }
         playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${card.kaartSoort}${card.kaartWaarde}"></span>`);
     });
+    if (playerAce===2){
+        playerAce-=1;
+        playerHandValue-=10;
+    }
     playerCardsValue.innerHTML = `${playerHandValue}`
 }
 
@@ -93,6 +97,10 @@ function drawCardsDealer() {
 
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${dealerHand[0].kaartSoort}${dealerHand[0].kaartWaarde}"></span>`);
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir B2"></span>`);
+    if (dealerAce===2){
+        dealerAce-=1;
+        dealerHandValue-=10;
+    }
     dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
     if (playerHandValue===21){
         dealerPlay()
@@ -230,7 +238,6 @@ function checkWinner(){
         console.log('zonder split')
         if(playerHandValue > 21){
             winOrLose.textContent='You busted!!!'
-            console.log(Math.random()*(challengesNSFW.length-1))
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
