@@ -55,6 +55,9 @@ const dealerCards = document.querySelector('.dealerCards');
 const drawSound = new Audio('./assets/draw.mp3');
 const shuffleSound = new Audio('./assets/shuffle.mp3');
 const dealerCardsValue = document.querySelector('.dealerCardsValue');
+const nextButton = document.getElementById('buttonNext');
+const winOrLose = document.querySelector('.finished h1');
+const discription = document.querySelector('.finished p')
 
 playerCards.style.display='flex';
 // Game Functions
@@ -117,7 +120,6 @@ function drawCardPlayer() {
 
 function drawCardSplitPlayer() {
     let randomkaart = gameDeck.shift();
-    console.log(splitHand)
     splitHand.push(randomkaart);
     splitCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
     playerSplitHandValue += randomkaart.spelWaarde;
@@ -157,6 +159,7 @@ function drawCardDealer() {
     
 }
 function dealerWhenBusted() {
+    checkWinner()
     dealerCardsValue.innerHTML = `${dealerHandValue}`
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
@@ -175,9 +178,6 @@ function checkSplit() {
 }
 
 function checkValue(){
-    if(playerHandValue>21){
-        checkWinner();
-    }
     if(playerHandValue===21){
         if (!splitTurn){
             dealerPlay();
@@ -187,16 +187,12 @@ function checkValue(){
 
 function dealerPlay(){
     if (playerHandValue>21 && playerSplitHandValue>21){
-        console.log('busted')
         dealerWhenBusted()
     }
     if (dealerHandValue>16){
-        console.log('heb al meer dan 16')
         dealerWhenBusted()
     } else {
-        console.log(dealerCardsValue)
     while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
-        console.log('hey')
         drawCardDealer();
 }
 dealerWhenBusted()
@@ -207,30 +203,45 @@ dealerWhenBusted()
 function checkWinner(){
     if (isSplit){
         if(playerHandValue > 21 && playerSplitHandValue>21){
+            winOrLose.textContent='You busted!!!'
+            discription.textContent=challengesNSFW[(Math.floor()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
         else if(playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21){
+            winOrLose.textContent='You lose!!!'
+            discription.textContent=challengesNSFW[(Math.floor()*(challengesNSFW.length-1))]
             console.log("You lost");
-            challengesNSFW[challengesNSFW.length-1];
         }
         else if(21>playerHandValue > dealerHandValue || 21>playerSplitHandValue > dealerHandValue || dealerHandValue > 21){
+            winOrLose.textContent='You won!!!'
+            discription.textContent='No challenge for you'
             console.log("You won");
         }
         else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
-             console.log('draw');
+            winOrLose.textContent="It's a draw!!"
+            discription.textContent='let someon do this challenge: '+ hallengesNSFW[(Math.random()*(challengesNSFW.length-1))]
+            console.log('draw');
         }
     } else {
         if(playerHandValue > 21){
+            winOrLose.textContent='You busted!!!'
+            console.log(Math.random()*(challengesNSFW.length-1))
+            discription.textContent=challengesNSFW[(Math.floor()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
         else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
+            winOrLose.textContent='You lose!!!'
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
-            challengesNSFW[challengesNSFW.length-1];
         }
-        else if(21>playerHandValue > dealerHandValue || dealerHandValue > 21){
+        else if(21>=playerHandValue > dealerHandValue || dealerHandValue > 21){
+            winOrLose.textContent='You won!!!'
+            discription.textContent='No challenge for you'
             console.log("You won");
         }
         else if(playerHandValue === dealerHandValue){
+            winOrLose.textContent="It's a draw!!"
+            discription.textContent='let someon do this challenge: '+ hallengesNSFW[(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
         }
     }
@@ -241,16 +252,13 @@ console.log(hitBtn)
 hitBtn.addEventListener('click', function () {
     checkValue();
     if (playerTurn && playerHandValue<21) {
-        console.log(playerHandValue)
         drawCardPlayer();
         checkValue();
-        console.log(splitTurn)
         if(playerHandValue===21){
             playerTurn=false;
         }
         if (playerHandValue>21){
             playerTurn =false;
-            console.log(splitTurn)
             if (!splitTurn){
                 dealerWhenBusted()
             } else{
@@ -334,5 +342,43 @@ function stopGame() {
 
 startGame();
 
+const removeCarts = function (){
+    splitBtn.style.display='none'
+    splitWaarde.style.display='none'
+    while (splitCards.firstChild) {
+        splitCards.removeChild(splitCards.firstChild)
+    }
+    while (playerCards.firstChild) {
+        playerCards.removeChild(playerCards.firstChild)
+    }
+    while (dealerCards.firstChild) {
+        dealerCards.removeChild(dealerCards.firstChild)
+    }
+    playerHand=[]
+    splitHand=[]
+    dealerHand=[]
+    playerHandValue=0
+    playerSplitHandValue=0
+    dealerHandValue=0
+    playerAce = 0;
+    splitAce = 0;
+    dealerAce = 0;
+    playerCanSplit = false;
+    playerTurn = true;
+    splitTurn = false;
+    isSplit = false;
+}
+
+const next = function () {
+    startGame()
+    overlay.style.display = 'none';
+    coloredOverlay.style.display = 'none';
+    shuffleSound.play();
+    playingFieldBox.style.display = null;
+}
+nextButton.addEventListener('click', function(){
+    removeCarts()
+    setTimeout(next(),1000)
+})
 console.log(playerHand);
 console.log(dealerHand);
