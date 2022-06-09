@@ -397,3 +397,19 @@ h2{
 	}
 }
 /*animation*/
+.card{
+	position: relative;
+	animation-name: card;
+  	animation-duration: 0s;
+  	animation-name: example;
+  	animation-duration: 4s;
+}
+
+@keyframes example {
+	0%   {top:-1000px;}
+	100% {top:0px;}
+  }
+  @keyframes card {
+	  0% {top:0px;}
+	  100%{top:-1000px;}
+  }

@@ -95,7 +95,10 @@ function drawCardsDealer() {
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${dealerHand[0].kaartSoort}${dealerHand[0].kaartWaarde}"></span>`);
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir B2"></span>`);
     dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
-
+    if (playerHandValue===21){
+        dealerPlay()
+        checkWinner()
+    }
 }
 
 function drawCardPlayer() {
@@ -210,14 +213,12 @@ function checkWinner(){
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
-        else if(playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21){
-            endRoundOverlay.style.display = "flex";
+        else if((playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21) || ((playerSplitHandValue === dealerHandValue && splitHand.length>dealerHand.length) && (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length))){
             winOrLose.textContent='You lose!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
         }
-        else if(21>playerHandValue > dealerHandValue || 21>playerSplitHandValue > dealerHandValue || dealerHandValue > 21){
-            endRoundOverlay.style.display = "flex";
+        else if((21>playerHandValue && playerHandValue > dealerHandValue) || (playerSplitHandValue === dealerHandValue && splitHand.length<dealerHand.length) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || (21>playerSplitHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
             winOrLose.textContent='You won!!!'
             discription.textContent='No challenge for you'
             console.log("You won");
@@ -229,6 +230,7 @@ function checkWinner(){
             console.log('draw');
         }
     } else {
+        console.log('zonder split')
         if(playerHandValue > 21){
             endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You busted!!!'
@@ -236,14 +238,12 @@ function checkWinner(){
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
-        else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
-            endRoundOverlay.style.display = "flex";
+        else if((playerHandValue < dealerHandValue && dealerHandValue <= 21) || (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length)){
             winOrLose.textContent='You lose!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
         }
-        else if(21>=playerHandValue > dealerHandValue || dealerHandValue > 21){
-            endRoundOverlay.style.display = "flex";
+        else if(( 21 >= playerHandValue && playerHandValue > dealerHandValue) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || dealerHandValue > 21){
             winOrLose.textContent='You won!!!'
             discription.textContent='No challenge for you'
             console.log("You won");
@@ -266,6 +266,10 @@ hitBtn.addEventListener('click', function () {
         checkValue();
         if(playerHandValue===21){
             playerTurn=false;
+            if (!splitTurn){
+                checkWinner()
+                dealerPlay()
+            }
         }
         if (playerHandValue>21){
             playerTurn =false;
@@ -297,7 +301,7 @@ standBtn.addEventListener('click', function () {
         playerTurn = false;
         if (!splitTurn){
             dealerPlay();
-            checkWinner()
+            checkWinner();
         } else{
             playerCards.style.display='none';
             splitCards.style.display='flex';
@@ -390,7 +394,7 @@ const next = function () {
 nextButton.addEventListener('click', function(){
     endRoundOverlay.style.display = "none";
     removeCarts()
-    setTimeout(next(),1000)
+    next()
 })
 console.log(playerHand);
 console.log(dealerHand);
