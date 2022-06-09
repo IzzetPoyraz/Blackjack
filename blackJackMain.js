@@ -16,6 +16,9 @@ let playerCanSplit = false;
 let playerTurn = true;
 let gameDeck = deck.kaarten;
 
+let playerAce = 0;
+let dealerAce = 0;
+
 const challengesSFW = ["Ga 15 keer pompen" , "doe 20 jumping jacks", "plank 1 minuut", "doe 20 situps", "doe 25 calf raises", "doe 15 squats"];
 const challengesNSFW = ["3 slokken bier" , "1 shotje", "at biertje", "draai 10 rondjes", "mix random cocktail", "bel je moeder", "2 slokken bier","4 slokken bier"];
 
@@ -56,6 +59,9 @@ function drawCardsPlayer() {
     }
     playerHand.forEach(card => {
         playerHandValue += card.spelWaarde;
+        if (card.spelWaarde===11){
+            playerAce+=1;
+        }
         playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${card.kaartSoort}${card.kaartWaarde}"></span>`);
     });
     playerCardsValue.innerHTML = `${playerHandValue}`
@@ -68,6 +74,9 @@ function drawCardsDealer() {
     }
 
     dealerHand.forEach(card => {
+        if (card.spelWaarde===11){
+            dealerAce+=1;
+        }
         dealerHandValue += card.spelWaarde;
     });
     dealerFirstCardValue = dealerHand[0].spelWaarde;
@@ -83,6 +92,12 @@ function drawCardPlayer() {
     playerHand.push(randomkaart);
     playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
     playerHandValue += randomkaart.spelWaarde;
+    if (playerAce>0){
+        if (playerHandValue>21){
+            playerHandValue-=10;
+            playerAce-=1;
+        }
+    }
     playerCardsValue.innerHTML = `${playerHandValue}`;
 }
 
@@ -90,6 +105,12 @@ function drawCardDealer() {
     let randomkaart = gameDeck.shift();
     dealerHand.push(randomkaart);
     dealerHandValue += randomkaart.spelWaarde;
+    if (dealerAce>1){
+        if (dealerHandValue>21){
+            dealerAce-=1;
+            dealerHandValue-=10;
+        }
+    }
     dealerCardsValue.innerHTML = `${dealerHandValue}`
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
