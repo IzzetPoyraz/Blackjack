@@ -2,12 +2,6 @@
 
 import { deck, nieuwDeck } from "./kaartBoek.js";
 
-//     spilt(){
-//         player.splitHand = player.hand.pop;
-//         split.classList.toggle('display');
-//     }
-// }
-
 // Init Variables
 
 let playerHand = [], dealerHand = [], splitHand = [];
@@ -185,7 +179,7 @@ function dealerWhenBusted() {
 }
 
 function checkSplit() {
-    if (playerHand[0].spelWaarde === playerHand[1].spelWaarde) {
+    if (playerHand[0].kaartWaarde === playerHand[1].kaartWaarde) {
         playerCanSplit = true;
     }
     console.log(playerCanSplit);
@@ -207,14 +201,14 @@ function dealerPlay(){
     if (dealerHandValue>16){
         dealerWhenBusted()
     } else {
-    while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
+        while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
         drawCardDealer();
-}
-checkWinner()
-dealerWhenBusted()
-}
-    checkWinner();
-}
+    }
+        checkWinner()
+        dealerWhenBusted()
+        }
+        checkWinner();
+    }
 
 function checkWinner(){
     if (isSplit){
@@ -392,7 +386,6 @@ const removeCards = function (){
     playerTurn = true;
     splitTurn = false;
     isSplit = false;
-    deck = nieuwDeck();
 }
 
 const next = function () {
