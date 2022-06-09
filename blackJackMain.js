@@ -1,6 +1,6 @@
 'use strict';
 
-import { deck } from "./kaartBoek.js";
+import { deck, nieuwDeck } from "./kaartBoek.js";
 
 //     spilt(){
 //         player.splitHand = player.hand.pop;
@@ -22,8 +22,11 @@ let playerAce = 0;
 let splitAce = 0;
 let dealerAce = 0;
 
-const challengesSFW = ["Ga 15 keer pompen" , "doe 20 jumping jacks", "plank 1 minuut", "doe 20 situps", "doe 25 calf raises", "doe 15 squats"];
-const challengesNSFW = ["3 slokken bier" , "1 shotje", "at biertje", "draai 10 rondjes", "mix random cocktail", "bel je moeder", "2 slokken bier","4 slokken bier"];
+const challengesSFW = ["Do 15 push-ups" , "Do 20 jumping jacks", "Plank for 1 minute", "Do 20 sit-ups", "Do 25 calf-raises", "Do 15 squats"];
+const challengesNSFW = ["Do 15 push-ups" , "Stand up and do jumping jacks until your next turn", "Plank for 1 minute", "Do 20 sit-ups", "Do 25 calf-raises", "Do 15 squats", "Take 2 sips of beer",
+"Take 3 sips of beer", "Take 4 sips of beer" , "Take a shot", "Shotgun beer", "Spin around 10 times", "Let someone mix a random cocktail for you", "Call your mother and put her on speaker", "Call your crush", 
+"Eat a raw egg", "Exchange shirts with the player to your right", "Do 10 burpees"
+];
 
 // Set display none
 const playingFieldBox = document.querySelector('section.playingField-box');
@@ -352,7 +355,7 @@ function stopGame() {
 
 startGame();
 
-const removeCarts = function (){
+const removeCards = function (){
     splitBtn.style.display='none'
     splitWaarde.style.display='none'
     while (splitCards.firstChild) {
@@ -377,6 +380,7 @@ const removeCarts = function (){
     playerTurn = true;
     splitTurn = false;
     isSplit = false;
+    deck = nieuwDeck();
 }
 
 const next = function () {
@@ -387,7 +391,7 @@ const next = function () {
     playingFieldBox.style.display = null;
 }
 nextButton.addEventListener('click', function(){
-    removeCarts()
+    removeCards()
     next()
 })
 console.log(playerHand);

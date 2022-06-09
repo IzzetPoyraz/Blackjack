@@ -19,7 +19,7 @@ class Kaart {
 }
 
 // maak deck aan
-const nieuwDeck = function() {
+export const nieuwDeck = function() {
         
     const kaarten = [];
         
@@ -37,6 +37,8 @@ const nieuwDeck = function() {
 }
     
 export const deck = new KaartBoek(nieuwDeck());
+
+
 
 // shuffle deck
 const shuffleDeck = function(kaarten) {
