@@ -369,7 +369,8 @@ h2{
 	width: 60%;
 	background-color: var(--blackBackground);
 	border-radius: 2rem;
-	
+	position: relative;
+	transition: example 1s;
 }
 .roundResult{
 	display: revert;
@@ -402,7 +403,7 @@ h2{
 	animation-name: card;
   	animation-duration: 0s;
   	animation-name: example;
-  	animation-duration: 4s;
+  	animation-duration: 2.5s;
 }
 
 @keyframes example {
