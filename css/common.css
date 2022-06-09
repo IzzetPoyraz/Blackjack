@@ -304,7 +304,7 @@ input::-webkit-inner-spin-button{
 	gap: 1rem;
 }
 
-.playerCards{
+.playerCards, .player1PlaceHolderSplit{
 	gap: 1rem;
 	display: flex;
 	justify-content: center;

@@ -10,18 +10,21 @@ import { deck } from "./kaartBoek.js";
 
 // Init Variables
 
-let playerHand = [], dealerHand = [];
+let playerHand = [], dealerHand = [], splitHand = [];
 let playerHandValue = 0, dealerHandValue = 0, dealerFirstCardValue = 0, playerSplitHandValue = 0;
 let playerCanSplit = false;
 let playerTurn = true;
+let splitTurn = false;
 let gameDeck = deck.kaarten;
+let playerBust = false;
+let splitBust = false;
 
 let playerAce = 0;
+let splitAce = 0;
 let dealerAce = 0;
 
 const challengesSFW = ["Ga 15 keer pompen" , "doe 20 jumping jacks", "plank 1 minuut", "doe 20 situps", "doe 25 calf raises", "doe 15 squats"];
 const challengesNSFW = ["3 slokken bier" , "1 shotje", "at biertje", "draai 10 rondjes", "mix random cocktail", "bel je moeder", "2 slokken bier","4 slokken bier"];
-
 
 // Set display none
 const playingFieldBox = document.querySelector('section.playingField-box');
@@ -30,6 +33,8 @@ const splitBtn = document.getElementById('split');
 splitBtn.style.display = 'none';
 const doubleBtn = document.getElementById('double');
 doubleBtn.style.display = 'none';
+const splitWaarde = document.querySelector('.splitWaarde');
+splitWaarde.style.display = 'none';
 
 //Select and control DOMelements
 
@@ -44,12 +49,15 @@ startButton.addEventListener('click', function () {
 });
 
 const playerCards = document.querySelector('.playerCards');
+const splitCards = document.querySelector('.player1PlaceHolderSplit')
 const playerCardsValue = document.querySelector('.playerCardsValue')
+const splitCardsValue = document.querySelector('.playerCardsSplitValue')
 const dealerCards = document.querySelector('.dealerCards');
 const drawSound = new Audio('./assets/draw.mp3');
 const shuffleSound = new Audio('./assets/shuffle.mp3');
-const dealerCardsValue = document.querySelector('.dealerCardsValue')
+const dealerCardsValue = document.querySelector('.dealerCardsValue');
 
+playerCards.style.display='flex';
 // Game Functions
 
 function drawCardsPlayer() {
@@ -92,19 +100,47 @@ function drawCardPlayer() {
     playerHand.push(randomkaart);
     playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
     playerHandValue += randomkaart.spelWaarde;
+    if (randomkaart.spelWaarde===11){
+        playerAce+=1;
+    }
     if (playerAce>0){
         if (playerHandValue>21){
             playerHandValue-=10;
             playerAce-=1;
         }
     }
+    if (playerHandValue===21 && splitTurn){
+        playerCards.style.display='none'
+        splitCards.style.display='flex'
+    }
     playerCardsValue.innerHTML = `${playerHandValue}`;
+}
+
+function drawCardSplitPlayer() {
+    let randomkaart = gameDeck.shift();
+    console.log(splitHand)
+    splitHand.push(randomkaart);
+    splitCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
+    playerSplitHandValue += randomkaart.spelWaarde;
+    if (randomkaart.spelWaarde===11){
+        splitAce+=1;
+    }
+    if (splitAce>0){
+        if (playerSplitHandValue>21){
+            playerSplitHandValue-=10;
+            splitAce-=1;
+        }
+    }
+    splitCardsValue.innerHTML = `${playerSplitHandValue}`;
 }
 
 function drawCardDealer() {
     let randomkaart = gameDeck.shift();
     dealerHand.push(randomkaart);
     dealerHandValue += randomkaart.spelWaarde;
+    if (randomkaart.spelWaarde===11){
+        dealerAce+=1;
+    }
     if (dealerAce>1){
         if (dealerHandValue>21){
             dealerAce-=1;
@@ -144,7 +180,9 @@ function checkValue(){
         checkWinner();
     }
     if(playerHandValue===21){
-        dealerPlay();
+        if (!splitTurn){
+            dealerPlay();
+        } 
     }
 }
 
@@ -158,7 +196,7 @@ function dealerPlay(){
         dealerWhenBusted()
     } else {
         console.log(dealerCardsValue)
-    while(dealerHandValue<playerHandValue && dealerHandValue<17 && playerHandValue<=21){
+    while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
         console.log('hey')
         drawCardDealer();
 }
@@ -169,17 +207,17 @@ dealerWhenBusted()
 
 function checkWinner(){
     dealerCardsValue.innerHTML = `${dealerHandValue}`
-    if(playerHandValue > 21){
+    if(playerHandValue > 21 && playerSplitHandValue>21){
         console.log('You busted')
     }
-    else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
+    else if(playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21){
         console.log("You lost");
         challengesNSFW[challengesNSFW.length-1];
     }
-    else if(playerHandValue > dealerHandValue || dealerHandValue > 21){
+    else if(playerHandValue > dealerHandValue || playerSplitHandValue > dealerHandValue || dealerHandValue > 21){
         console.log("You won");
     }
-    else if(playerHandValue === 21 && dealerHandValue === 21){
+    else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
          console.log('draw');
     }
 }
@@ -192,19 +230,43 @@ hitBtn.addEventListener('click', function () {
         console.log(playerHandValue)
         drawCardPlayer();
         checkValue();
+        console.log(splitTurn)
+        if(playerHandValue===21){
+            playerTurn=false;
+        }
         if (playerHandValue>21){
-            dealerWhenBusted()
+            playerTurn =false;
+            console.log(splitTurn)
+            if (!splitTurn){
+                dealerWhenBusted()
+            }
         }
         if (playerCanSplit) {
             splitBtn.style.display = 'none';
+        }
+    } else if (splitTurn && playerSplitHandValue<21) {
+        drawCardSplitPlayer();
+        checkValue();
+        if (playerSplitHandValue>21){
+            dealerWhenBusted()
         }
     }
 });
 
 const standBtn = document.querySelector('#stand');
 standBtn.addEventListener('click', function () {
-    dealerPlay();
-    playerTurn === false;
+    if (playerTurn){
+        playerTurn = false;
+        if (!splitTurn){
+            dealerPlay();
+        } else{
+            playerCards.style.display='none';
+            splitCards.style.display='flex';
+        }
+    } else {
+        splitTurn = false;
+        dealerPlay();
+    }
 });
 
 function startGame() {
@@ -219,6 +281,31 @@ function startGame() {
     console.log(playerHandValue);
     console.log(dealerHandValue)
 }
+
+function split() {
+    splitCards.insertAdjacentHTML('beforeend', `<span class="card ir ${playerHand[1].kaartSoort}${playerHand[1].kaartWaarde}"></span>`);
+    playerCards.removeChild(playerCards.children[1])
+    if (playerHand[1].spelWaarde===11){
+        playerAce -= 1;
+        splitAce += 1;
+    }
+    playerHandValue -= playerHand[1].spelWaarde;
+    playerSplitHandValue += playerHand[1].spelWaarde;
+    splitHand.push(playerHand[1])
+    playerHand.pop();
+    playerCardsValue.innerHTML = `${playerHandValue}`;
+    splitCardsValue.innerHTML = `${playerSplitHandValue}`;
+}
+
+
+splitBtn.addEventListener('click', function () {
+    //splitCards.style.display='block'
+    //splitCards.style.marginLeft='1rem'
+    //playerCards.style.marginRight='1rem'
+    splitWaarde.style.display='block'
+    splitTurn = true;
+    split()
+})
 
 function stopGame() {
     
