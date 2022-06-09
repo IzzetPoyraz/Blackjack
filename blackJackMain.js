@@ -56,8 +56,9 @@ const drawSound = new Audio('./assets/draw.mp3');
 const shuffleSound = new Audio('./assets/shuffle.mp3');
 const dealerCardsValue = document.querySelector('.dealerCardsValue');
 const nextButton = document.getElementById('buttonNext');
-const winOrLose = document.querySelector('.finished h1');
-const discription = document.querySelector('.finished p')
+const winOrLose = document.querySelector('.finished h2');
+const discription = document.querySelector('.finished p');
+const endRoundOverlay = document.querySelector('.finished');
 
 playerCards.style.display='flex';
 // Game Functions
@@ -207,6 +208,7 @@ dealerWhenBusted()
 function checkWinner(){
     if (isSplit){
         if(playerHandValue > 21 && playerSplitHandValue>21){
+            endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You busted!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
@@ -222,6 +224,7 @@ function checkWinner(){
             console.log("You won");
         }
         else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
+            endRoundOverlay.style.display = "flex";
             winOrLose.textContent="It's a draw!!"
             discription.textContent='let someon do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
@@ -229,6 +232,7 @@ function checkWinner(){
     } else {
         console.log('zonder split')
         if(playerHandValue > 21){
+            endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You busted!!!'
             console.log(Math.random()*(challengesNSFW.length-1))
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
@@ -245,6 +249,7 @@ function checkWinner(){
             console.log("You won");
         }
         else if(playerHandValue === dealerHandValue){
+            endRoundOverlay.style.display = "flex";
             winOrLose.textContent="It's a draw!!"
             discription.textContent='let someon do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
@@ -387,6 +392,7 @@ const next = function () {
     playingFieldBox.style.display = null;
 }
 nextButton.addEventListener('click', function(){
+    endRoundOverlay.style.display = "none";
     removeCarts()
     next()
 })
