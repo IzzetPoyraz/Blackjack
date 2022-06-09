@@ -59,8 +59,9 @@ const drawSound = new Audio('./assets/draw.mp3');
 const shuffleSound = new Audio('./assets/shuffle.mp3');
 const dealerCardsValue = document.querySelector('.dealerCardsValue');
 const nextButton = document.getElementById('buttonNext');
-const winOrLose = document.querySelector('.finished h1');
-const discription = document.querySelector('.finished p')
+const winOrLose = document.querySelector('.finished h2');
+const discription = document.querySelector('.finished p');
+const endRoundOverlay = document.querySelector('.finished');
 
 playerCards.style.display='flex';
 // Game Functions
@@ -210,21 +211,23 @@ dealerWhenBusted()
 function checkWinner(){
     if (isSplit){
         if(playerHandValue > 21 && playerSplitHandValue>21){
+            endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You busted!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
-        else if(playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21){
+        else if((playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21) || ((playerSplitHandValue === dealerHandValue && splitHand.length>dealerHand.length) && (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length))){
             winOrLose.textContent='You lose!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
         }
-        else if((21>playerHandValue && playerHandValue > dealerHandValue) || (21>playerSplitHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
+        else if((21>playerHandValue && playerHandValue > dealerHandValue) || (playerSplitHandValue === dealerHandValue && splitHand.length<dealerHand.length) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || (21>playerSplitHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
             winOrLose.textContent='You won!!!'
             discription.textContent='No challenge for you'
             console.log("You won");
         }
         else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
+            endRoundOverlay.style.display = "flex";
             winOrLose.textContent="It's a draw!!"
             discription.textContent='let someon do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
@@ -232,22 +235,24 @@ function checkWinner(){
     } else {
         console.log('zonder split')
         if(playerHandValue > 21){
+            endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You busted!!!'
             console.log(Math.random()*(challengesNSFW.length-1))
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
-        else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
+        else if((playerHandValue < dealerHandValue && dealerHandValue <= 21) || (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length)){
             winOrLose.textContent='You lose!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
         }
-        else if(( 21 >= playerHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
+        else if(( 21 >= playerHandValue && playerHandValue > dealerHandValue) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || dealerHandValue > 21){
             winOrLose.textContent='You won!!!'
             discription.textContent='No challenge for you'
             console.log("You won");
         }
         else if(playerHandValue === dealerHandValue){
+            endRoundOverlay.style.display = "flex";
             winOrLose.textContent="It's a draw!!"
             discription.textContent='let someon do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
@@ -391,6 +396,7 @@ const next = function () {
     playingFieldBox.style.display = null;
 }
 nextButton.addEventListener('click', function(){
+    endRoundOverlay.style.display = "none";
     removeCards()
     next()
 })
