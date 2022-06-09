@@ -325,9 +325,24 @@ input::-webkit-inner-spin-button{
 	width: 4rem;
 	height: 4rem;
 	border: solid 3px var(--darkRed);
+	background-color: var(--lightRed);
+}
+button{
+	cursor: pointer;	
+}
+button:hover{
 	background-color: var(--lightRedTransparent);
 }
-
+h2{
+	display: none;
+}
+.challenge,.title{
+	display: block;
+	text-align: center;
+	color: var(--darkRed);
+	font-weight: 900;
+	font-size: 3.5rem;
+}
 /* 31.25em = 500px */
 @media (min-width: 31.25em) {
 	.dealer {
