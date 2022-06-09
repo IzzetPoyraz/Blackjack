@@ -211,12 +211,12 @@ function checkWinner(){
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
-        else if(playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21){
+        else if((playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21) || ((playerSplitHandValue === dealerHandValue && splitHand.length>dealerHand.length) && (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length))){
             winOrLose.textContent='You lose!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
         }
-        else if((21>playerHandValue && playerHandValue > dealerHandValue) || (21>playerSplitHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
+        else if((21>playerHandValue && playerHandValue > dealerHandValue) || (playerSplitHandValue === dealerHandValue && splitHand.length<dealerHand.length) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || (21>playerSplitHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
             winOrLose.textContent='You won!!!'
             discription.textContent='No challenge for you'
             console.log("You won");
@@ -234,12 +234,12 @@ function checkWinner(){
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
-        else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
+        else if((playerHandValue < dealerHandValue && dealerHandValue <= 21) || (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length)){
             winOrLose.textContent='You lose!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
         }
-        else if(( 21 >= playerHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
+        else if(( 21 >= playerHandValue && playerHandValue > dealerHandValue) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || dealerHandValue > 21){
             winOrLose.textContent='You won!!!'
             discription.textContent='No challenge for you'
             console.log("You won");
