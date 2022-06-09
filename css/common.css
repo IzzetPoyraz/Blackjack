@@ -196,7 +196,8 @@ input::-webkit-inner-spin-button{
 .actions{
 	max-width: 100vw;
 }
-@media (min-width:600px){
+
+/* @media (min-width:600px){
 	.inzetChips{
 		width: 66vw;
 		position: fixed;
@@ -252,12 +253,13 @@ input::-webkit-inner-spin-button{
 		right: 17.5rem;
 		left: auto;
 	}
-}
-@media (min-width:950px){
+} */
+
+/* @media (min-width:950px){
 	.inzetChips ul{
 		flex-wrap: nowrap;
 	}
-}
+} */
 .playingField {
 	display: flex;
 	flex-direction: column;
