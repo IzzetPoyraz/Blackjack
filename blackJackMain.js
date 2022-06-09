@@ -141,6 +141,7 @@ function dealerPlay(){
         console.log('hey')
         drawCardDealer();
 }
+dealerWhenBusted()
 }
     checkWinner();
 }
@@ -187,6 +188,7 @@ standBtn.addEventListener('click', function () {
 
 function startGame() {
     drawCardsPlayer();
+    drawCardsDealer();
     if (playerHandValue === 21) {
         dealerPlay();
     }
@@ -194,7 +196,6 @@ function startGame() {
         splitBtn.style.display = null;
     }
     console.log(playerHandValue);
-    drawCardsDealer();
     console.log(dealerHandValue)
 }
 
