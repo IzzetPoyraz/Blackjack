@@ -100,6 +100,15 @@ function drawCardDealer() {
     dealerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
     
 }
+function dealerWhenBusted() {
+    dealerCardsValue.innerHTML = `${dealerHandValue}`
+    Array.from(dealerCards.children).forEach(element => {
+        if (element.classList.contains('B2')) {
+            element.classList.remove('B2');
+            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`)
+        }
+    });
+}
 
 function checkSplit() {
     if (playerHand[0].spelWaarde === playerHand[1].spelWaarde) {
@@ -119,9 +128,20 @@ function checkValue(){
 }
 
 function dealerPlay(){
-    while(dealerHandValue<=playerHandValue && dealerHandValue<=21){
-        drawCardDealer();
+    if (playerHandValue>21){
+        console.log('busted')
+        dealerWhenBusted()
     }
+    if (dealerHandValue>16){
+        console.log('heb al meer dan 16')
+        dealerWhenBusted()
+    } else {
+        console.log(dealerCardsValue)
+    while(dealerHandValue<playerHandValue && dealerHandValue<17 && playerHandValue<=21){
+        console.log('hey')
+        drawCardDealer();
+}
+}
     checkWinner();
 }
 
@@ -146,9 +166,13 @@ const hitBtn = document.querySelector('#hit');
 console.log(hitBtn)
 hitBtn.addEventListener('click', function () {
     checkValue();
-    if (playerTurn) {
+    if (playerTurn && playerHandValue<21) {
+        console.log(playerHandValue)
         drawCardPlayer();
         checkValue();
+        if (playerHandValue>21){
+            dealerWhenBusted()
+        }
         if (playerCanSplit) {
             splitBtn.style.display = 'none';
         }
