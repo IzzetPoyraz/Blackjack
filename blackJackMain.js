@@ -400,7 +400,6 @@ const removeCards = function (){
     playerTurn = true;
     splitTurn = false;
     isSplit = false;
-    deck = nieuwDeck();
 }
 
 const next = function () {
