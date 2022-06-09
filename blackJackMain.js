@@ -16,6 +16,10 @@ let playerCanSplit = false;
 let playerTurn = true;
 let gameDeck = deck.kaarten;
 
+const challengesSFW = ["Ga 15 keer pompen" , "doe 20 jumping jacks", "plank 1 minuut", "doe 20 situps", "doe 25 calf raises", "doe 15 squats"];
+const challengesNSFW = ["3 slokken bier" , "1 shotje", "at biertje", "draai 10 rondjes", "mix random cocktail", "bel je moeder", "2 slokken bier","4 slokken bier"];
+
+
 // Set display none
 const playingFieldBox = document.querySelector('section.playingField-box');
 playingFieldBox.style.display = 'none';
@@ -127,7 +131,8 @@ function checkWinner(){
         console.log('You busted')
     }
     else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
-        console.log("You lost")
+        console.log("You lost");
+        challengesNSFW[challengesNSFW.length-1];
     }
     else if(playerHandValue > dealerHandValue || dealerHandValue > 21){
         console.log("You won");

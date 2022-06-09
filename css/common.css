@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 :root{
 	--darkRed: #7E0000;
     --lightRed: #FF0000;
@@ -6,7 +7,11 @@
 }
 
 body {
-	background-color: #2B802E;
+	background-color: var(--bg);
+}
+html{font-family: 'Roboto', sans-serif;}
+:root {
+	--bg: #2B802E;
 }
 .PopUpButton,.open {
 	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
@@ -299,12 +304,6 @@ input::-webkit-inner-spin-button{
 	gap: 1rem;
 }
 
-.player-box {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-}
-
 .playerCards{
 	gap: 1rem;
 	display: flex;
@@ -333,10 +332,34 @@ input::-webkit-inner-spin-button{
 	width: 4rem;
 	height: 4rem;
 	border: solid 3px var(--darkRed);
+	background-color: var(--lightRed);
+}
+button{
+	cursor: pointer;	
+}
+button:hover{
 	background-color: var(--lightRedTransparent);
 }
-
+h2{
+	display: none;
+}
+.challenge,.title{
+	display: block;
+	text-align: center;
+	color: var(--darkRed);
+	font-weight: 900;
+	font-size: 3.5rem;
+}
 /* 31.25em = 500px */
 @media (min-width: 31.25em) {
+	.dealer {
+		flex-direction: row;
+		align-items: flex-start;
+	}
 
+	.player {
+		flex-direction: row;
+		align-items: flex-start;
+	}
 }
+/*animation*/

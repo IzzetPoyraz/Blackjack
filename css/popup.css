@@ -1,5 +1,9 @@
+@import "common.css";
+@import "style.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 .modal-container {
-    background-color: rgb(0, 0, 0, 0.3);
+    background-color: rgb(0, 0, 0, 0.4);
     position: fixed;
     display: flex;
     align-items: center;
@@ -17,15 +21,86 @@
 }
 .modal{
     background: none;
-    background-color: #fff;
+    background-color: var(--bg);
     border-radius: 5%;
     opacity: 1;
     box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
     padding: 20px 40px;
     width: 500px;
-    max-width: 100%;
+    max-width: 60%;
+    max-height: 50%;
+    word-wrap: break-word;
+    font-weight: bold;
     
 }
-.modal h2 {
-    text-align: center;
+.modal  {
+overflow: auto;}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: none; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  #close {
+    font-weight: bold;
+    background-color: var(--bg);
+    width: 100%;
+    cursor: pointer;
+    padding: 0.25em;
+    border: 2px solid #375C38;
+    transition-duration: 0.4s;
+    }
+    #close:hover{
+        color: white;
+        background-color: #375C38;
+    }
+
+@media (min-width: 46.875em){
+    .modal-container {
+        background-color: rgb(0, 0, 0, 0.4);
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition-duration: 0.2s;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .modal-container.show{
+        pointer-events: auto;
+        opacity: 1;
+    }
+    .modal{
+        background: none;
+        background-color: var(--bg);
+        border-radius: 5%;
+        opacity: 1;
+        box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+        border: 2px solid #375C38;
+        padding: 20px 40px;
+        width: 500px;
+        max-width: 100%;
+        font-weight: bold;
+        
+    }
+    .modal h2 {
+        text-align: center;
+        font-weight: bolder;
+    }
+
 }
+
+
+    
