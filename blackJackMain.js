@@ -195,6 +195,7 @@ function dealerPlay(){
     while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
         drawCardDealer();
 }
+checkWinner()
 dealerWhenBusted()
 }
     checkWinner();
@@ -219,7 +220,7 @@ function checkWinner(){
         }
         else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
             winOrLose.textContent="It's a draw!!"
-            discription.textContent='let someon do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
+            discription.textContent='let someon do this challenge: '+ hallengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
         }
     } else {
@@ -241,7 +242,7 @@ function checkWinner(){
         }
         else if(playerHandValue === dealerHandValue){
             winOrLose.textContent="It's a draw!!"
-            discription.textContent='let someon do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
+            discription.textContent='let someon do this challenge: '+ hallengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
         }
     }
@@ -287,6 +288,7 @@ standBtn.addEventListener('click', function () {
         playerTurn = false;
         if (!splitTurn){
             dealerPlay();
+            checkWinner()
         } else{
             playerCards.style.display='none';
             splitCards.style.display='flex';
