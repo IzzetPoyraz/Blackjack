@@ -195,6 +195,7 @@ function dealerPlay(){
     while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
         drawCardDealer();
 }
+checkWinner()
 dealerWhenBusted()
 }
     checkWinner();
@@ -204,12 +205,12 @@ function checkWinner(){
     if (isSplit){
         if(playerHandValue > 21 && playerSplitHandValue>21){
             winOrLose.textContent='You busted!!!'
-            discription.textContent=challengesNSFW[(Math.floor()*(challengesNSFW.length-1))]
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
         else if(playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21){
             winOrLose.textContent='You lose!!!'
-            discription.textContent=challengesNSFW[(Math.floor()*(challengesNSFW.length-1))]
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
         }
         else if(21>playerHandValue > dealerHandValue || 21>playerSplitHandValue > dealerHandValue || dealerHandValue > 21){
@@ -219,14 +220,14 @@ function checkWinner(){
         }
         else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
             winOrLose.textContent="It's a draw!!"
-            discription.textContent='let someon do this challenge: '+ hallengesNSFW[(Math.random()*(challengesNSFW.length-1))]
+            discription.textContent='let someon do this challenge: '+ hallengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
         }
     } else {
         if(playerHandValue > 21){
             winOrLose.textContent='You busted!!!'
             console.log(Math.random()*(challengesNSFW.length-1))
-            discription.textContent=challengesNSFW[(Math.floor()*(challengesNSFW.length-1))]
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
         }
         else if(playerHandValue < dealerHandValue && dealerHandValue <= 21){
@@ -241,7 +242,7 @@ function checkWinner(){
         }
         else if(playerHandValue === dealerHandValue){
             winOrLose.textContent="It's a draw!!"
-            discription.textContent='let someon do this challenge: '+ hallengesNSFW[(Math.random()*(challengesNSFW.length-1))]
+            discription.textContent='let someon do this challenge: '+ hallengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
         }
     }
@@ -287,6 +288,7 @@ standBtn.addEventListener('click', function () {
         playerTurn = false;
         if (!splitTurn){
             dealerPlay();
+            checkWinner()
         } else{
             playerCards.style.display='none';
             splitCards.style.display='flex';
