@@ -16,8 +16,6 @@ let playerCanSplit = false;
 let playerTurn = true;
 let splitTurn = false;
 let gameDeck = deck.kaarten;
-let playerBust = false;
-let splitBust = false;
 
 let playerAce = 0;
 let splitAce = 0;
@@ -187,7 +185,7 @@ function checkValue(){
 }
 
 function dealerPlay(){
-    if (playerHandValue>21){
+    if (playerHandValue>21 && playerSplitHandValue>21){
         console.log('busted')
         dealerWhenBusted()
     }
@@ -206,7 +204,6 @@ dealerWhenBusted()
 }
 
 function checkWinner(){
-    dealerCardsValue.innerHTML = `${dealerHandValue}`
     if(playerHandValue > 21 && playerSplitHandValue>21){
         console.log('You busted')
     }
@@ -214,7 +211,7 @@ function checkWinner(){
         console.log("You lost");
         challengesNSFW[challengesNSFW.length-1];
     }
-    else if(playerHandValue > dealerHandValue || playerSplitHandValue > dealerHandValue || dealerHandValue > 21){
+    else if(21>playerHandValue > dealerHandValue || 21>playerSplitHandValue > dealerHandValue || dealerHandValue > 21){
         console.log("You won");
     }
     else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
@@ -237,6 +234,8 @@ hitBtn.addEventListener('click', function () {
         if (playerHandValue>21){
             playerTurn =false;
             console.log(splitTurn)
+            playerCards.style.display='none'
+            splitCards.style.display='flex'
             if (!splitTurn){
                 dealerWhenBusted()
             }
@@ -247,8 +246,11 @@ hitBtn.addEventListener('click', function () {
     } else if (splitTurn && playerSplitHandValue<21) {
         drawCardSplitPlayer();
         checkValue();
+        if (playerSplitHandValue===21){
+            dealerPlay()
+        }
         if (playerSplitHandValue>21){
-            dealerWhenBusted()
+            dealerPlay()
         }
     }
 });
@@ -299,9 +301,7 @@ function split() {
 
 
 splitBtn.addEventListener('click', function () {
-    //splitCards.style.display='block'
-    //splitCards.style.marginLeft='1rem'
-    //playerCards.style.marginRight='1rem'
+    splitBtn.style.display='none'
     splitWaarde.style.display='block'
     splitTurn = true;
     split()
