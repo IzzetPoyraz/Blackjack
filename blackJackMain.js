@@ -234,10 +234,11 @@ hitBtn.addEventListener('click', function () {
         if (playerHandValue>21){
             playerTurn =false;
             console.log(splitTurn)
-            playerCards.style.display='none'
-            splitCards.style.display='flex'
             if (!splitTurn){
                 dealerWhenBusted()
+            } else{
+                playerCards.style.display='none'
+            splitCards.style.display='flex'
             }
         }
         if (playerCanSplit) {
