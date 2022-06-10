@@ -45,9 +45,9 @@ startButton.addEventListener('click', function () {
 });
 
 const playerCards = document.querySelector('.playerCards');
-const splitCards = document.querySelector('.player1PlaceHolderSplit')
-const playerCardsValue = document.querySelector('.playerCardsValue')
-const splitCardsValue = document.querySelector('.playerCardsSplitValue')
+const splitCards = document.querySelector('.player1PlaceHolderSplit');
+const playerCardsValue = document.querySelector('.playerCardsValue');
+const splitCardsValue = document.querySelector('.playerCardsSplitValue');
 const dealerCards = document.querySelector('.dealerCards');
 const drawSound = new Audio('./assets/draw.mp3');
 const shuffleSound = new Audio('./assets/shuffle.mp3');
@@ -76,7 +76,7 @@ function drawCardsPlayer() {
         playerAce-=1;
         playerHandValue-=10;
     }
-    playerCardsValue.innerHTML = `${playerHandValue}`
+    playerCardsValue.innerHTML = `${playerHandValue}`;
 }
 
 function drawCardsDealer() {
@@ -99,10 +99,10 @@ function drawCardsDealer() {
         dealerAce-=1;
         dealerHandValue-=10;
     }
-    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
+    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`;
     if (playerHandValue===21){
-        dealerPlay()
-        setTimeout(checkWinner, 2000)
+        dealerPlay();
+        setTimeout(checkWinner, 2000);
     }
 }
 
@@ -121,8 +121,8 @@ function drawCardPlayer() {
         }
     }
     if (playerHandValue===21 && splitTurn){
-        playerCards.style.display='none'
-        splitCards.style.display='flex'
+        playerCards.style.display='none';
+        splitCards.style.display='flex';
     }
     drawSound.play();
     playerCardsValue.innerHTML = `${playerHandValue}`;
@@ -158,11 +158,11 @@ function drawCardDealer() {
             dealerHandValue-=10;
         }
     }
-    dealerCardsValue.innerHTML = `${dealerHandValue}`
+    dealerCardsValue.innerHTML = `${dealerHandValue}`;
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
             element.classList.remove('B2');
-            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`)
+            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`);
         }
     });
     drawSound.play();
@@ -175,7 +175,7 @@ function dealerWhenBusted() {
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
             element.classList.remove('B2');
-            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`)
+            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`);
         }
     });
 }
@@ -184,7 +184,6 @@ function checkSplit() {
     if (playerHand[0].kaartWaarde === playerHand[1].kaartWaarde) {
         playerCanSplit = true;
     }
-    console.log(playerCanSplit);
     return playerCanSplit;
 }
 
@@ -198,16 +197,16 @@ function checkValue(){
 
 function dealerPlay(){
     if (playerHandValue>21 && playerSplitHandValue>21){
-        dealerWhenBusted()
+        dealerWhenBusted();
     }
     if (dealerHandValue>16){
-        dealerWhenBusted()
+        dealerWhenBusted();
     } else {
         while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
         drawCardDealer();
     }
-    setTimeout(checkWinner, 2000)
-    dealerWhenBusted()
+    setTimeout(checkWinner, 2000);
+    dealerWhenBusted();
     }
     setTimeout(checkWinner, 2000);
 }
@@ -218,59 +217,49 @@ function checkWinner(){
     if (isSplit){
         if(playerHandValue > 21 && playerSplitHandValue>21){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You busted!'
-            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log('You busted')
+            winOrLose.textContent='You busted!';
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
         else if((playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21) || ((playerSplitHandValue === dealerHandValue && splitHand.length>dealerHand.length) && (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length))){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You lose!'
-            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log("You lost");
+            winOrLose.textContent='You lose!';
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
         else if((21>playerHandValue && playerHandValue > dealerHandValue) || (playerSplitHandValue === dealerHandValue && splitHand.length<dealerHand.length) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || (21>playerSplitHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You won!!!'
-            discription.textContent='Pass the device to the next player'
-            console.log("You won");
+            winOrLose.textContent='You won!!!';
+            discription.textContent='Pass the device to the next player';
         }
         else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent="It's a draw!!"
-            discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log('draw');
+            winOrLose.textContent="It's a draw!!";
+            discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
     } else {
-        console.log('zonder split')
         if(playerHandValue > 21){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You busted!!!'
-            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log('You busted')
+            winOrLose.textContent='You busted!!!';
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
         else if((playerHandValue < dealerHandValue && dealerHandValue <= 21) || (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length)){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You lose!!!'
-            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log("You lost");
+            winOrLose.textContent='You lose!!!';
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
         else if(( 21 >= playerHandValue && playerHandValue > dealerHandValue) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || dealerHandValue > 21){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You won!!!'
-            discription.textContent='Pass the device to the next player'
-            console.log("You won");
+            winOrLose.textContent='You won!!!';
+            discription.textContent='Pass the device to the next player';
         }
         else if(playerHandValue === dealerHandValue){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent="It's a draw!!"
-            discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log('draw');
+            winOrLose.textContent="It's a draw!!";
+            discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
     }
 }
 
 const hitBtn = document.querySelector('#hit');
-console.log(hitBtn)
 hitBtn.addEventListener('click', function () {
     checkValue();
     if (playerTurn && playerHandValue<21) {
@@ -313,7 +302,7 @@ standBtn.addEventListener('click', function () {
         playerTurn = false;
         if (!splitTurn){
             dealerPlay();
-            setTimeout(checkWinner, 2000)
+            setTimeout(checkWinner, 2000);
         } else{
             playerCards.style.display='none';
             splitCards.style.display='flex';
@@ -333,20 +322,18 @@ function startGame() {
     if (checkSplit()) {
         splitBtn.style.display = null;
     }
-    console.log(playerHandValue);
-    console.log(dealerHandValue)
 }
 
 function split() {
     splitCards.insertAdjacentHTML('beforeend', `<span class="card ir ${playerHand[1].kaartSoort}${playerHand[1].kaartWaarde}"></span>`);
-    playerCards.removeChild(playerCards.children[1])
+    playerCards.removeChild(playerCards.children[1]);
     if (playerHand[1].spelWaarde===11){
         playerAce -= 1;
         splitAce += 1;
     }
     playerHandValue -= playerHand[1].spelWaarde;
     playerSplitHandValue += playerHand[1].spelWaarde;
-    splitHand.push(playerHand[1])
+    splitHand.push(playerHand[1]);
     playerHand.pop();
     playerCardsValue.innerHTML = `${playerHandValue}`;
     splitCardsValue.innerHTML = `${playerSplitHandValue}`;
@@ -354,11 +341,11 @@ function split() {
 
 
 splitBtn.addEventListener('click', function () {
-    splitBtn.style.display='none'
-    splitWaarde.style.display='block'
+    splitBtn.style.display='none';
+    splitWaarde.style.display='block';
     splitTurn = true;
     isSplit = true;
-    split()
+    split();
 })
 
 function stopGame() {
@@ -370,17 +357,17 @@ function stopGame() {
 startGame();
 
 const removeCards = function (){
-    splitBtn.style.display='none'
-    splitWaarde.style.display='none'
+    splitBtn.style.display='none';
+    splitWaarde.style.display='none';
     splitCards.innerHTML = "";
     playerCards.innerHTML = "";
     dealerCards.innerHTML = "";
-    playerHand=[]
-    splitHand=[]
-    dealerHand=[]
-    playerHandValue=0
-    playerSplitHandValue=0
-    dealerHandValue=0
+    playerHand=[];
+    splitHand=[];
+    dealerHand=[];
+    playerHandValue=0;
+    playerSplitHandValue=0;
+    dealerHandValue=0;
     playerAce = 0;
     splitAce = 0;
     dealerAce = 0;
@@ -397,10 +384,9 @@ const next = function () {
     shuffleSound.play();
     playingFieldBox.style.display = null;
 }
+
 nextButton.addEventListener('click', function(){
     endRoundOverlay.style.display = "none";
-    removeCards()
-    next()
+    removeCards();
+    next();
 })
-console.log(playerHand);
-console.log(dealerHand);
