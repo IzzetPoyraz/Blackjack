@@ -61,6 +61,9 @@ playerCards.style.display='flex';
 // Game Functions
 
 function drawCardsPlayer() {
+    if (gameDeck.kaarten.length < 2) {
+        gameDeck = nieuwDeck();
+    }
     for (let i = 0 ; i < 2 ; i++) {
         let randomkaart = gameDeck.shift();
         playerHand.push(randomkaart);
@@ -80,6 +83,9 @@ function drawCardsPlayer() {
 }
 
 function drawCardsDealer() {
+    if (gameDeck.kaarten.length < 2) {
+        gameDeck = nieuwDeck();
+    }
     for (let i = 0 ; i < 2 ; i++) {
         let randomkaart = gameDeck.shift();
         dealerHand.push(randomkaart);
@@ -107,6 +113,9 @@ function drawCardsDealer() {
 }
 
 function drawCardPlayer() {
+    if (gameDeck.kaarten.length < 1) {
+        gameDeck = nieuwDeck();
+    }
     let randomkaart = gameDeck.shift();
     playerHand.push(randomkaart);
     playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
@@ -129,6 +138,9 @@ function drawCardPlayer() {
 }
 
 function drawCardSplitPlayer() {
+    if (gameDeck.kaarten.length < 1) {
+        gameDeck = nieuwDeck();
+    }
     let randomkaart = gameDeck.shift();
     splitHand.push(randomkaart);
     splitCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
@@ -146,6 +158,9 @@ function drawCardSplitPlayer() {
 }
 
 function drawCardDealer() {
+    if (gameDeck.kaarten.length < 1) {
+        gameDeck = nieuwDeck();
+    }
     let randomkaart = gameDeck.shift();
     dealerHand.push(randomkaart);
     dealerHandValue += randomkaart.spelWaarde;
