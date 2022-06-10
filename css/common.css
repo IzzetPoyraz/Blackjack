@@ -389,6 +389,24 @@ h2{
 	margin-left: -6rem;
 }
 
+.start-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+}
+
+.title-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Secular One', sans-serif;
+}
+
+.start-wrapper p{
+	color: var(--textWhite);
+}
+
+
 /* 31.25em = 500px */
 @media (min-width: 31.25em) {
 	.dealer {
