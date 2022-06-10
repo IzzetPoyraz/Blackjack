@@ -383,6 +383,7 @@ const next = function () {
     coloredOverlay.style.display = 'none';
     shuffleSound.play();
     playerCards.style.display = null;
+    playingFieldBox.style.display = null;
 }
 
 nextButton.addEventListener('click', function(){
