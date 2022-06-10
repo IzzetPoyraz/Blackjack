@@ -57,6 +57,7 @@ const winOrLose = document.querySelector('.finished h2');
 const discription = document.querySelector('.finished p');
 const endRoundOverlay = document.querySelector('.finished');
 
+
 playerCards.style.display='flex';
 // Game Functions
 
@@ -405,4 +406,4 @@ nextButton.addEventListener('click', function(){
     endRoundOverlay.style.display = "none";
     removeCards();
     next();
-})
+});
