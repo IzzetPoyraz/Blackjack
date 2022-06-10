@@ -376,12 +376,12 @@ h2{
 	display: revert;
 	color: #ffffff;
 	font-family: 'Secular One', sans-serif;
-	font-size: 4rem;
+	font-size: 3rem;
 	text-align: center;
 }
 .challenge{
 	font-family: 'Secular One', sans-serif;
-	font-size: 3.5rem;
+	font-size: 2rem;
 	color: var(--lightRed);
 	text-align: center;
 }
@@ -416,6 +416,15 @@ h2{
 @media (min-width: 50em) {
 	.card:not(:first-child){
 		margin-left: .5rem;
+	}
+	.roundResult{
+		font-size: 4rem;
+	}
+	.challenge{
+		font-family: 'Secular One', sans-serif;
+		font-size: 3rem;
+		color: var(--lightRed);
+		text-align: center;
 	}
 }
 
