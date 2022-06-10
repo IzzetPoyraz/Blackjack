@@ -19,8 +19,7 @@ let dealerAce = 0;
 const challengesSFW = ["Do 15 push-ups" , "Do 20 jumping jacks", "Plank for 1 minute", "Do 20 sit-ups", "Do 25 calf-raises", "Do 15 squats"];
 const challengesNSFW = ["Do 15 push-ups" , "Stand up and do jumping jacks until your next turn", "Plank for 1 minute", "Do 20 sit-ups", "Do 25 calf-raises", "Do 15 squats", "Take 2 sips of beer",
 "Take 3 sips of beer", "Take 4 sips of beer" , "Take a shot", "Shotgun beer", "Spin around 10 times", "Let someone mix a random cocktail for you", "Call your mother and put her on speaker", "Call your crush", 
-"Eat a raw egg", "Exchange shirts with the player to your right", "Do 10 burpees"
-];
+"Eat a raw egg", "Exchange shirts with the player to your right", "Do 10 burpees"];
 
 // Set display none
 const playingFieldBox = document.querySelector('section.playingField-box');
@@ -76,10 +75,13 @@ function drawCardsPlayer() {
         playerAce-=1;
         playerHandValue-=10;
     }
-    playerCardsValue.innerHTML = `${playerHandValue}`
+    playerCardsValue.innerHTML = `${playerHandValue}`;
 }
 
 function drawCardsDealer() {
+    if (deck.kaarten.length < 2) {
+        gameDeck = nieuwDeck();
+    }
     for (let i = 0 ; i < 2 ; i++) {
         let randomkaart = gameDeck.shift();
         dealerHand.push(randomkaart);
@@ -99,10 +101,10 @@ function drawCardsDealer() {
         dealerAce-=1;
         dealerHandValue-=10;
     }
-    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
+    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`;
     if (playerHandValue===21){
-        dealerPlay()
-        setTimeout(checkWinner, 3500)
+        dealerPlay();
+        setTimeout(checkWinner, 3500);
     }
 }
 
@@ -121,8 +123,8 @@ function drawCardPlayer() {
         }
     }
     if (playerHandValue===21 && splitTurn){
-        playerCards.style.display='none'
-        splitCards.style.display='flex'
+        playerCards.style.display='none';
+        splitCards.style.display='flex';
     }
     drawSound.play();
     playerCardsValue.innerHTML = `${playerHandValue}`;
@@ -142,6 +144,7 @@ function drawCardSplitPlayer() {
             splitAce-=1;
         }
     }
+    drawSound.play();
     splitCardsValue.innerHTML = `${playerSplitHandValue}`;
 }
 
@@ -162,7 +165,7 @@ function drawCardDealer() {
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
             element.classList.remove('B2');
-            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`)
+            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`);
         }
     });
     drawSound.play();
@@ -175,7 +178,7 @@ function dealerWhenBusted() {
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
             element.classList.remove('B2');
-            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`)
+            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`);
         }
     });
 }
@@ -198,17 +201,17 @@ function checkValue(){
 
 function dealerPlay(){
     if (playerHandValue>21 && playerSplitHandValue>21){
-        dealerWhenBusted()
+        dealerWhenBusted();
     }
     if (dealerHandValue>16){
-        dealerWhenBusted()
+        dealerWhenBusted();
     } else {
-        while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
-        drawCardDealer();
-    }
-    setTimeout(checkWinner, 3500)
-    dealerWhenBusted()
-    }
+            while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
+                drawCardDealer();
+            }   
+        setTimeout(checkWinner, 3500);
+        dealerWhenBusted();
+        }
     setTimeout(checkWinner, 3500);
 }
 
@@ -218,59 +221,49 @@ function checkWinner(){
     if (isSplit){
         if(playerHandValue > 21 && playerSplitHandValue>21){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You busted!'
-            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log('You busted')
+            winOrLose.textContent='You busted!';
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
         else if((playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21) || ((playerSplitHandValue === dealerHandValue && splitHand.length>dealerHand.length) && (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length))){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You lose!'
-            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log("You lost");
+            winOrLose.textContent='You lose!';
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
         else if((21>playerHandValue && playerHandValue > dealerHandValue) || (playerSplitHandValue === dealerHandValue && splitHand.length<dealerHand.length) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || (21>playerSplitHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You won!!!'
-            discription.textContent='Pass the device to the next player'
-            console.log("You won");
+            winOrLose.textContent='You won!!!';
+            discription.textContent='Pass the device to the next player';
         }
         else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent="It's a draw!!"
-            discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log('draw');
+            winOrLose.textContent="It's a draw!!";
+            discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
     } else {
-        console.log('zonder split')
         if(playerHandValue > 21){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You busted!!!'
-            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log('You busted')
+            winOrLose.textContent='You busted!!!';
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
         else if((playerHandValue < dealerHandValue && dealerHandValue <= 21) || (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length)){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You lose!!!'
-            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log("You lost");
+            winOrLose.textContent='You lose!!!';
+            discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
         else if(( 21 >= playerHandValue && playerHandValue > dealerHandValue) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || dealerHandValue > 21){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent='You won!!!'
-            discription.textContent='Pass the device to the next player'
-            console.log("You won");
+            winOrLose.textContent='You won!!!';
+            discription.textContent='Pass the device to the next player';
         }
         else if(playerHandValue === dealerHandValue){
             endRoundOverlay.style.display = "flex";
-            winOrLose.textContent="It's a draw!!"
-            discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
-            console.log('draw');
+            winOrLose.textContent="It's a draw!!";
+            discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))];
         }
     }
 }
 
 const hitBtn = document.querySelector('#hit');
-console.log(hitBtn)
 hitBtn.addEventListener('click', function () {
     checkValue();
     if (playerTurn && playerHandValue<21) {
@@ -333,8 +326,6 @@ function startGame() {
     if (checkSplit()) {
         splitBtn.style.display = null;
     }
-    console.log(playerHandValue);
-    console.log(dealerHandValue)
 }
 
 function split() {
@@ -346,7 +337,7 @@ function split() {
     }
     playerHandValue -= playerHand[1].spelWaarde;
     playerSplitHandValue += playerHand[1].spelWaarde;
-    splitHand.push(playerHand[1])
+    splitHand.push(playerHand[1]);
     playerHand.pop();
     playerCardsValue.innerHTML = `${playerHandValue}`;
     splitCardsValue.innerHTML = `${playerSplitHandValue}`;
@@ -354,11 +345,11 @@ function split() {
 
 
 splitBtn.addEventListener('click', function () {
-    splitBtn.style.display='none'
-    splitWaarde.style.display='block'
+    splitBtn.style.display='none';
+    splitWaarde.style.display='block';
     splitTurn = true;
     isSplit = true;
-    split()
+    split();
 })
 
 function stopGame() {
@@ -397,16 +388,16 @@ const removeCards = function (){
 }
 
 const next = function () {
-    startGame()
+    startGame();
     overlay.style.display = 'none';
     coloredOverlay.style.display = 'none';
     shuffleSound.play();
-    playingFieldBox.style.display = null;
+    playerCards.style.display = null;
 }
 nextButton.addEventListener('click', function(){
     endRoundOverlay.style.display = "none";
-    removeCards()
-    next()
+    removeCards();
+    next();
 })
 console.log(playerHand);
 console.log(dealerHand);
