@@ -378,11 +378,11 @@ const removeCards = function (){
 }
 
 const next = function () {
-    startGame()
+    startGame();
     overlay.style.display = 'none';
     coloredOverlay.style.display = 'none';
     shuffleSound.play();
-    playingFieldBox.style.display = null;
+    playerCards.style.display = null;
 }
 
 nextButton.addEventListener('click', function(){
