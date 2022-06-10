@@ -377,12 +377,16 @@ h2{
 	color: #ffffff;
 	font-family: 'Secular One', sans-serif;
 	font-size: 4rem;
+	text-align: center;
 }
 .challenge{
 	font-family: 'Secular One', sans-serif;
 	font-size: 3.5rem;
 	color: var(--lightRed);
 	text-align: center;
+}
+.card:not(:first-child){
+	margin-left: -6rem;
 }
 
 /* 31.25em = 500px */
@@ -396,7 +400,25 @@ h2{
 		flex-direction: row;
 		align-items: flex-start;
 	}
+	.card:not(:first-child){
+		margin-left: -4rem;
+	}
 }
+
+/* 40.625em = 650px */
+@media (min-width: 40.625em) {
+	.card:not(:first-child){
+		margin-left: -1.5rem;
+	}
+}
+
+/* 50em = 800px */
+@media (min-width: 50em) {
+	.card:not(:first-child){
+		margin-left: .5rem;
+	}
+}
+
 /*animation*/
 .card{
 	position: relative;

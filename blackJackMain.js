@@ -102,7 +102,7 @@ function drawCardsDealer() {
     dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
     if (playerHandValue===21){
         dealerPlay()
-        setTimeout(checkWinner, 3500)
+        setTimeout(checkWinner, 2000)
     }
 }
 
@@ -170,7 +170,7 @@ function drawCardDealer() {
     
 }
 function dealerWhenBusted() {
-    setTimeout(checkWinner, 3500)
+    setTimeout(checkWinner, 2000)
     dealerCardsValue.innerHTML = `${dealerHandValue}`
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
@@ -206,10 +206,10 @@ function dealerPlay(){
         while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
         drawCardDealer();
     }
-    setTimeout(checkWinner, 3500)
+    setTimeout(checkWinner, 2000)
     dealerWhenBusted()
     }
-    setTimeout(checkWinner, 3500);
+    setTimeout(checkWinner, 2000);
 }
 
 
@@ -279,7 +279,7 @@ hitBtn.addEventListener('click', function () {
         if(playerHandValue===21){
             playerTurn=false;
             if (!splitTurn){
-                setTimeout(checkWinner, 3500);
+                setTimeout(checkWinner, 2000);
                 dealerPlay();
             }
         }
@@ -313,7 +313,7 @@ standBtn.addEventListener('click', function () {
         playerTurn = false;
         if (!splitTurn){
             dealerPlay();
-            setTimeout(checkWinner, 3500)
+            setTimeout(checkWinner, 2000)
         } else{
             playerCards.style.display='none';
             splitCards.style.display='flex';
@@ -372,15 +372,9 @@ startGame();
 const removeCards = function (){
     splitBtn.style.display='none'
     splitWaarde.style.display='none'
-    while (splitCards.firstChild) {
-        splitCards.removeChild(splitCards.firstChild)
-    }
-    while (playerCards.firstChild) {
-        playerCards.removeChild(playerCards.firstChild)
-    }
-    while (dealerCards.firstChild) {
-        dealerCards.removeChild(dealerCards.firstChild)
-    }
+    splitCards.innerHTML = "";
+    playerCards.innerHTML = "";
+    dealerCards.innerHTML = "";
     playerHand=[]
     splitHand=[]
     dealerHand=[]
