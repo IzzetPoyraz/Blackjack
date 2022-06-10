@@ -50,9 +50,9 @@ startButton.addEventListener('click', function () {
 });
 
 const playerCards = document.querySelector('.playerCards');
-const splitCards = document.querySelector('.player1PlaceHolderSplit')
-const playerCardsValue = document.querySelector('.playerCardsValue')
-const splitCardsValue = document.querySelector('.playerCardsSplitValue')
+const splitCards = document.querySelector('.player1PlaceHolderSplit');
+const playerCardsValue = document.querySelector('.playerCardsValue');
+const splitCardsValue = document.querySelector('.playerCardsSplitValue');
 const dealerCards = document.querySelector('.dealerCards');
 const drawSound = new Audio('./assets/draw.mp3');
 const shuffleSound = new Audio('./assets/shuffle.mp3');
@@ -66,6 +66,9 @@ playerCards.style.display='flex';
 // Game Functions
 
 function drawCardsPlayer() {
+    if (gameDeck.length < 2) {
+        gameDeck = nieuwDeck();
+    }
     for (let i = 0 ; i < 2 ; i++) {
         let randomkaart = gameDeck.shift();
         playerHand.push(randomkaart);
@@ -81,10 +84,13 @@ function drawCardsPlayer() {
         playerAce-=1;
         playerHandValue-=10;
     }
-    playerCardsValue.innerHTML = `${playerHandValue}`
+    playerCardsValue.innerHTML = `${playerHandValue}`;
 }
 
 function drawCardsDealer() {
+    if (gameDeck.length < 2) {
+        gameDeck = nieuwDeck();
+    }
     for (let i = 0 ; i < 2 ; i++) {
         let randomkaart = gameDeck.shift();
         dealerHand.push(randomkaart);
@@ -104,14 +110,17 @@ function drawCardsDealer() {
         dealerAce-=1;
         dealerHandValue-=10;
     }
-    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`
+    dealerCardsValue.innerHTML = `${dealerFirstCardValue}?`;
     if (playerHandValue===21){
-        dealerPlay()
-        setTimeout(checkWinner, 3500)
+        dealerPlay();
+        setTimeout(checkWinner, 2000);
     }
 }
 
 function drawCardPlayer() {
+    if (gameDeck.length < 1) {
+        gameDeck = nieuwDeck();
+    }
     let randomkaart = gameDeck.shift();
     playerHand.push(randomkaart);
     playerCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
@@ -126,14 +135,17 @@ function drawCardPlayer() {
         }
     }
     if (playerHandValue===21 && splitTurn){
-        playerCards.style.display='none'
-        splitCards.style.display='flex'
+        playerCards.style.display='none';
+        splitCards.style.display='flex';
     }
     drawSound.play();
     playerCardsValue.innerHTML = `${playerHandValue}`;
 }
 
 function drawCardSplitPlayer() {
+    if (gameDeck.length < 1) {
+        gameDeck = nieuwDeck();
+    }
     let randomkaart = gameDeck.shift();
     splitHand.push(randomkaart);
     splitCards.insertAdjacentHTML('beforeend', `<span class="card ir ${randomkaart.kaartSoort}${randomkaart.kaartWaarde}"></span>`);
@@ -151,6 +163,9 @@ function drawCardSplitPlayer() {
 }
 
 function drawCardDealer() {
+    if (gameDeck.length < 1) {
+        gameDeck = nieuwDeck();
+    }
     let randomkaart = gameDeck.shift();
     dealerHand.push(randomkaart);
     dealerHandValue += randomkaart.spelWaarde;
@@ -163,11 +178,11 @@ function drawCardDealer() {
             dealerHandValue-=10;
         }
     }
-    dealerCardsValue.innerHTML = `${dealerHandValue}`
+    dealerCardsValue.innerHTML = `${dealerHandValue}`;
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
             element.classList.remove('B2');
-            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`)
+            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`);
         }
     });
     drawSound.play();
@@ -175,12 +190,12 @@ function drawCardDealer() {
     
 }
 function dealerWhenBusted() {
-    setTimeout(checkWinner, 3500)
+    setTimeout(checkWinner, 2000)
     dealerCardsValue.innerHTML = `${dealerHandValue}`
     Array.from(dealerCards.children).forEach(element => {
         if (element.classList.contains('B2')) {
             element.classList.remove('B2');
-            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`)
+            element.classList.add(`${dealerHand[1].kaartSoort}${dealerHand[1].kaartWaarde}`);
         }
     });
 }
@@ -189,7 +204,6 @@ function checkSplit() {
     if (playerHand[0].kaartWaarde === playerHand[1].kaartWaarde) {
         playerCanSplit = true;
     }
-    console.log(playerCanSplit);
     return playerCanSplit;
 }
 
@@ -203,18 +217,18 @@ function checkValue(){
 
 function dealerPlay(){
     if (playerHandValue>21 && playerSplitHandValue>21){
-        dealerWhenBusted()
+        dealerWhenBusted();
     }
     if (dealerHandValue>16){
-        dealerWhenBusted()
+        dealerWhenBusted();
     } else {
         while((dealerHandValue<playerHandValue || dealerHandValue<playerSplitHandValue) && dealerHandValue<17 && (playerHandValue<=21 || playerSplitHandValue<=21)){
         drawCardDealer();
     }
-    setTimeout(checkWinner, 3500)
-    dealerWhenBusted()
+    setTimeout(checkWinner, 2000);
+    dealerWhenBusted();
     }
-    setTimeout(checkWinner, 3500);
+    setTimeout(checkWinner, 2000);
 }
 
 
@@ -250,7 +264,6 @@ function checkWinner(){
             myShakeEvent.start();
         }
     } else {
-        console.log('zonder split')
         if(playerHandValue > 21){
             endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You busted!!!'
@@ -283,7 +296,6 @@ function checkWinner(){
 }
 
 const hitBtn = document.querySelector('#hit');
-console.log(hitBtn)
 hitBtn.addEventListener('click', function () {
     checkValue();
     if (playerTurn && playerHandValue<21) {
@@ -292,7 +304,7 @@ hitBtn.addEventListener('click', function () {
         if(playerHandValue===21){
             playerTurn=false;
             if (!splitTurn){
-                setTimeout(checkWinner, 3500);
+                setTimeout(checkWinner, 2000);
                 dealerPlay();
             }
         }
@@ -326,7 +338,7 @@ standBtn.addEventListener('click', function () {
         playerTurn = false;
         if (!splitTurn){
             dealerPlay();
-            setTimeout(checkWinner, 3500)
+            setTimeout(checkWinner, 2000);
         } else{
             playerCards.style.display='none';
             splitCards.style.display='flex';
@@ -346,20 +358,18 @@ function startGame() {
     if (checkSplit()) {
         splitBtn.style.display = null;
     }
-    console.log(playerHandValue);
-    console.log(dealerHandValue)
 }
 
 function split() {
     splitCards.insertAdjacentHTML('beforeend', `<span class="card ir ${playerHand[1].kaartSoort}${playerHand[1].kaartWaarde}"></span>`);
-    playerCards.removeChild(playerCards.children[1])
+    playerCards.removeChild(playerCards.children[1]);
     if (playerHand[1].spelWaarde===11){
         playerAce -= 1;
         splitAce += 1;
     }
     playerHandValue -= playerHand[1].spelWaarde;
     playerSplitHandValue += playerHand[1].spelWaarde;
-    splitHand.push(playerHand[1])
+    splitHand.push(playerHand[1]);
     playerHand.pop();
     playerCardsValue.innerHTML = `${playerHandValue}`;
     splitCardsValue.innerHTML = `${playerSplitHandValue}`;
@@ -367,11 +377,11 @@ function split() {
 
 
 splitBtn.addEventListener('click', function () {
-    splitBtn.style.display='none'
-    splitWaarde.style.display='block'
+    splitBtn.style.display='none';
+    splitWaarde.style.display='block';
     splitTurn = true;
     isSplit = true;
-    split()
+    split();
 })
 
 function stopGame() {
@@ -414,15 +424,14 @@ const removeCards = function (){
 }
 
 const next = function () {
-    startGame()
+    startGame();
     overlay.style.display = 'none';
     coloredOverlay.style.display = 'none';
     shuffleSound.play();
+    playerCards.style.display = null;
     playingFieldBox.style.display = null;
 }
 window.addEventListener('shake', next, false)
 nextButton.addEventListener('click', function(){
     removeCards()
 })
-console.log(playerHand);
-console.log(dealerHand);

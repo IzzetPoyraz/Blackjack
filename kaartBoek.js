@@ -18,28 +18,6 @@ class Kaart {
     }
 }
 
-// maak deck aan
-export const nieuwDeck = function() {
-        
-    const kaarten = [];
-        
-    for (let i = 0 ; i < WAARDE.length ; i++) {
-        for (let j = 0 ; j < SOORT.length ; j++) {
-            kaarten.push(new Kaart(SOORT[j], WAARDE[i], SPELWAARDE[i]));
-        }
-    }
-        
-    kaarten.forEach(element => {
-        kaarten.push(element);
-    });
-        
-    return kaarten;
-}
-    
-export const deck = new KaartBoek(nieuwDeck());
-
-
-
 // shuffle deck
 const shuffleDeck = function(kaarten) {
     for (let i = 0 ; i < kaarten.length ; i++) {
@@ -52,5 +30,24 @@ const shuffleDeck = function(kaarten) {
     return kaarten;
 }
 
-shuffleDeck(deck.kaarten);
-console.log(deck);
+// maak deck aan
+export const nieuwDeck = function() {
+        
+    let kaarten = [];
+        
+    for (let i = 0 ; i < WAARDE.length ; i++) {
+        for (let j = 0 ; j < SOORT.length ; j++) {
+            kaarten.push(new Kaart(SOORT[j], WAARDE[i], SPELWAARDE[i]));
+        }
+    }
+        
+    kaarten.forEach(element => {
+        kaarten.push(element);
+    });
+
+    kaarten = shuffleDeck(kaarten);
+        
+    return kaarten;
+}
+    
+export let deck = new KaartBoek(nieuwDeck());

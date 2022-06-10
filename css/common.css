@@ -365,25 +365,50 @@ h2{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	min-width: 20rem;
+	min-width: 17rem;
 	width: 60%;
+	max-width: 50rem;
 	background-color: var(--blackBackground);
 	border-radius: 2rem;
 	position: relative;
-	transition: example 1s;
+	transition: example 1.5s;
 }
 .roundResult{
 	display: revert;
 	color: #ffffff;
 	font-family: 'Secular One', sans-serif;
-	font-size: 4rem;
+	font-size: 2rem;
+	text-align: center;
+	margin: 1rem .5rem;
 }
 .challenge{
 	font-family: 'Secular One', sans-serif;
-	font-size: 3.5rem;
+	font-size: 1.5rem;
 	color: var(--lightRed);
 	text-align: center;
+	margin: .5rem;
 }
+.card:not(:first-child){
+	margin-left: -6rem;
+}
+
+.start-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+}
+
+.title-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Secular One', sans-serif;
+}
+
+.start-wrapper p{
+	color: var(--textWhite);
+}
+
 
 /* 31.25em = 500px */
 @media (min-width: 31.25em) {
@@ -396,7 +421,37 @@ h2{
 		flex-direction: row;
 		align-items: flex-start;
 	}
+	.card:not(:first-child){
+		margin-left: -4rem;
+	}
 }
+
+/* 40.625em = 650px */
+@media (min-width: 40.625em) {
+	.card:not(:first-child){
+		margin-left: -1.5rem;
+	}
+}
+
+/* 50em = 800px */
+@media (min-width: 50em) {
+	.challengeCard{
+		min-height: 17rem;
+	}
+	.card:not(:first-child){
+		margin-left: .5rem;
+	}
+	.roundResult{
+		font-size: 4rem;
+	}
+	.challenge{
+		font-family: 'Secular One', sans-serif;
+		font-size: 3rem;
+		color: var(--lightRed);
+		text-align: center;
+	}
+}
+
 /*animation*/
 .card{
 	position: relative;

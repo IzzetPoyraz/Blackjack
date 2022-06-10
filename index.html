@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/SA.svg">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/cards.css">
@@ -24,18 +25,8 @@
     <title>Blackjack</title>
 </head>
 <body>
-    <header>
-        
-    </header>
     <main>
-        
-        <div class="overlay">
-            
-        </div>
-        
-        
-        
-        
+        <div class="overlay"></div>
         <!--start scherm-->
         <section class="overlayStart">
             <div class="modal-container" id="modal_container">
@@ -72,32 +63,24 @@
                     <button id="close">close</button>
                 </div>
             </div>
-       
-            <button id="open"  class="PopUpButton info">i</button>
-            <h1 class="ir" >Blackjack</h1>
-            <div class="start-button-box">
-                <button class="ButtonPlay PopUpButton" id="buttonPlay">Play</button>
+
+            <div class="start-wrapper">
+                <button id="open"  class="PopUpButton info">i</button>
+                <div class="title-box">
+                    <h1 class="ir" >Blackjack</h1>
+                    <p>Will you get jacked or blacked-out drunk?</p>
+                </div>
+                <div class="start-button-box">
+                    <button class="ButtonPlay PopUpButton" id="buttonPlay">Play</button>
+                </div>
             </div>
-            <!-- <form id="post"  novalidate>
-                <div class="amountPlayers">
-                    <label for="players">Enter the number of players<br>(MAX 4)</label>
-                    <input type="number" placeholder="1" name="players" id="players" min="1" max="4" required>
-                    <div id="players-valid" class="inputDescription">error</div>
-                </div>
-                <div>
-                    <button type="submit" class="ButtonPlay PopUpButton">Play</button>
-                </div>
-            </form> -->
 
         </section>
         
       <!--playing field-->
       <section class="playingField-box">
             <h1 class="ir" >Blackjack</h1>
-            <!--<h2 class="">end round</h2>
-            <h2 class="">Do: </h2>-->
             <section class="playingField">
-
                 <div class="dealer">
                     <div class="player-box">
                         <p class="player-title">Dealer</p>
@@ -130,43 +113,6 @@
                 <button id="stand">stand</button>
                 <button id="double">double</button>
             </section>
-
-            <!-- <section id="player 2">
-                <p></p>
-                <img src="assets/" alt="card placeholder">
-                <div class="player2PlaceHolder">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <div class="player2PlaceHolderSplit">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-            </section>
-            <section id="player 3">
-                <p></p>
-                <img src="assets/" alt="card placeholder">
-                <div class="player3PlaceHolder">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <div class="player3PlaceHolderSplit">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-            </section>
-            <section id="player 4">
-                <p></p>
-                <img src="assets/" alt="card placeholder">
-                <div class="player4PlaceHolder">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <div class="player4PlaceHolderSplit">
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-            </section>
-            <div class="actions"><button id="nonActive" class="split">split</button>
-            <button class="hit">hit</button>
-            <button class="stand">stand</button>
-            <button class="double">double</button>
-            </div>
-            </section> -->
         </section>
 
         <div class="finished">
@@ -190,10 +136,8 @@
                 <li><img id="vijfhonderdPunten" src="assets/poker-chip.png" alt="500 punten"></li>
                 <li><img id="duizendpunten" src="assets/poker-chip.png" alt="1000 punten"></li>
             </ul>
-        </div></section>
+        </div>
+    </section>
     </main>
-    <footer>
-    </footer>
-   
 </body>
 </html>
