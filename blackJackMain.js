@@ -1,5 +1,10 @@
 'use strict';
 
+const myShakeEvent = new Shake({
+    threshold: 15, // optional shake strength threshold
+    timeout: 1000 // optional, determines the frequency of event generation
+});
+
 import { deck, nieuwDeck } from "./kaartBoek.js";
 
 // Init Variables
@@ -221,24 +226,28 @@ function checkWinner(){
             winOrLose.textContent='You busted!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
+            myShakeEvent.start();
         }
         else if((playerHandValue < dealerHandValue && playerSplitHandValue < dealerHandValue && dealerHandValue <= 21) || ((playerSplitHandValue === dealerHandValue && splitHand.length>dealerHand.length) && (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length))){
             endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You lose!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
+            myShakeEvent.start();
         }
         else if((21>playerHandValue && playerHandValue > dealerHandValue) || (playerSplitHandValue === dealerHandValue && splitHand.length<dealerHand.length) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || (21>playerSplitHandValue && playerHandValue > dealerHandValue) || dealerHandValue > 21){
             endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You won!!!'
             discription.textContent='Pass the device to the next player'
             console.log("You won");
+            myShakeEvent.start();
         }
         else if(playerHandValue === dealerHandValue || dealerHandValue === playerSplitHandValue){
             endRoundOverlay.style.display = "flex";
             winOrLose.textContent="It's a draw!!"
             discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
+            myShakeEvent.start();
         }
     } else {
         console.log('zonder split')
@@ -247,24 +256,28 @@ function checkWinner(){
             winOrLose.textContent='You busted!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('You busted')
+            myShakeEvent.start();
         }
         else if((playerHandValue < dealerHandValue && dealerHandValue <= 21) || (playerHandValue === dealerHandValue && playerHand.length>dealerHand.length)){
             endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You lose!!!'
             discription.textContent=challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log("You lost");
+            myShakeEvent.start();
         }
         else if(( 21 >= playerHandValue && playerHandValue > dealerHandValue) || (playerHandValue === dealerHandValue && playerHand.length<dealerHand.length) || dealerHandValue > 21){
             endRoundOverlay.style.display = "flex";
             winOrLose.textContent='You won!!!'
             discription.textContent='Pass the device to the next player'
             console.log("You won");
+            myShakeEvent.start();
         }
         else if(playerHandValue === dealerHandValue){
             endRoundOverlay.style.display = "flex";
             winOrLose.textContent="It's a draw!!"
             discription.textContent='let someone do this challenge: '+ challengesNSFW[Math.floor(Math.random()*(challengesNSFW.length-1))]
             console.log('draw');
+            myShakeEvent.start();
         }
     }
 }
@@ -370,6 +383,9 @@ function stopGame() {
 startGame();
 
 const removeCards = function (){
+    myShakeEvent.stop();
+    endRoundOverlay.style.display = "none";
+    removeCards()
     splitBtn.style.display='none'
     splitWaarde.style.display='none'
     while (splitCards.firstChild) {
@@ -394,6 +410,7 @@ const removeCards = function (){
     playerTurn = true;
     splitTurn = false;
     isSplit = false;
+    next()
 }
 
 const next = function () {
@@ -403,10 +420,9 @@ const next = function () {
     shuffleSound.play();
     playingFieldBox.style.display = null;
 }
+window.addEventListener('shake', next, false)
 nextButton.addEventListener('click', function(){
-    endRoundOverlay.style.display = "none";
     removeCards()
-    next()
 })
 console.log(playerHand);
 console.log(dealerHand);
